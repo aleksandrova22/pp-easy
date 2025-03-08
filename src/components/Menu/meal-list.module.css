@@ -1,0 +1,18 @@
+
+  .meal {display: flex;
+
+    & img {
+        aspect-ratio: 1/1;
+       
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      & p {
+        font-size: large;
+        font-style: italic;
+        color: green;
+      }
+
+
+}
