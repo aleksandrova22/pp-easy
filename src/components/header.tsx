@@ -10,7 +10,7 @@ const
     { href: '/', title: 'Домашняя' },
     { href: '/product', title: 'Меню' },
     { href: '/menus', title: 'Рецепты' },
-    { href: '/user-menu', title: 'Мое меню' },
+    { href: '/menubyuser', title: 'Мое меню' },
     { href: '/contact', title: 'Контакты' },
 
   ];

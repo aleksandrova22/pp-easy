@@ -16,15 +16,15 @@ export function MenuByUser({userId}: {userId: string | undefined}) {
         [error, setError] = useState(null),
         // [menus, setMenus] = useState<Menu[]>([]),
         [data, setData] = useState<UsersMeal[]>([]);
-const 
-data1 =  repo(UsersMeal)
-.findFirst(
-    {userId:userId },
-    {include: {
-        user: true,
-    }
+// const 
+// data1 =  repo(UsersMeal)
+// .findFirst(
+//     {userId:userId },
+//     {include: {
+//         user: true,
+//     }
     
-});
+// });
 
     useEffect(() => {
         repo(UsersMeal)
