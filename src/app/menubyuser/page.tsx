@@ -12,7 +12,7 @@ export default function PageUserMemu() {
       сумма ккал: 
       <hr /> 
       отображение меню
-      <h2> <MenuByUser userId={remult.user?.id} /></h2>
+      {/* <h2> <MenuByUser userId={remult.user?.id} /></h2> */}
      
     </>
   }
