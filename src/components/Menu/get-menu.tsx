@@ -7,7 +7,8 @@ import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { User } from '@/demo/auth/User';
-import { MenuByUser } from './menuByUser';
+import { MenuByUser } from './menu-user';
+import { remult } from "remult";
 
 
 
@@ -17,10 +18,10 @@ export function GetMenu() {
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
-        [users, setUsers] = useState<User[]>([]),
-        menusByUsers = Object.groupBy(users, user => user.id),
-        usersIDs = Object.keys(menusByUsers);
-       
+        [users, setUsers] = useState<User[]>([]);
+    // menusByUsers = Object.groupBy(users, user => user.id),
+    // usersIDs = Object.keys(menusByUsers);
+
 
     useEffect(() => {
         repo(Menu)
@@ -54,24 +55,24 @@ export function GetMenu() {
 
     // }
 
+     
+    
+    // {if (!remult.user?.id) return <>Авторизируйтесь!</> }
+
 
     return <div className={classes.meal}>
-
-<div></div>
-        {/* <MenuByUser userId={'1'} /> */}
-
+      
         {loading ? <Spinner /> :
 
             <ul className={classes.meal}>
                 {data?.map(menus => <li key={menus.id}><p>{menus.name}</p><p>КБЖУ:{menus.energy}</p>
                     <Image src={"/" + menus?.photo} width={200} height={200} alt="Picture of the author" />
                     <br /> Рецепт: <p>{menus.recipe}</p>
-
                     {/* <button onClick={addMenuByUser(menus.id)} > Добавить в мои блюда </button> */}
                 </li>)}
             </ul>
-
         }
+
 
     </div >
 

@@ -2,6 +2,10 @@ import NextAuth, { NextAuthConfig } from "next-auth";
 import type { ProviderType } from "next-auth/providers";
 import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
+import Vk from "next-auth/providers/vk";
+import MailRu from "next-auth/providers/mailru";
+import Yandex from "next-auth/providers/yandex";
 import { repo, withRemult, type UserInfo } from "remult";
 import bcrypt from "bcryptjs";
 import { User } from "../demo/auth/User";
@@ -46,6 +50,10 @@ const authConfig: NextAuthConfig = {
         }),
     }),
     GitHub,
+    Google,
+    MailRu,
+    Vk,
+    Yandex,
   ],
   callbacks: {
     signIn: (arg) =>

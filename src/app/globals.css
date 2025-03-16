@@ -9,13 +9,13 @@
 }
 
 :root {
-  --color-dark: #c1f3bd;
-  --color-darker: rgb(227, 242, 227);
+  --color-dark: #40c537ec;
+  --color-darker: rgb(220, 250, 224);
   --color-darkest: #0c8343;
 
-  --color-light: #b7bbbf;
-  --color-lighter: #eee;
-  --color-lightest: #fff;
+  --color-light: #18191a;
+  --color-lighter: #200505;
+  --color-lightest: #181616;
 
   --color-green: #0c8343;
   --color-blue: #0d84ff;
@@ -55,6 +55,9 @@ h1{ color: #0c8343;
 margin: 5px;
 padding: 10px;}
 
+h2{ color: #0c8343;
+  margin: 5px;
+  padding: 10px;}
 
 header {
   background-color: lightgreen;
@@ -95,7 +98,7 @@ header {
 }
 
 
-.logo {
+/* .logo {
   height: 3em;
   padding: 1em;
   will-change: filter;
@@ -110,9 +113,9 @@ header {
     filter: drop-shadow(0 0 10em #075f22aa);
 
   }
-}
+} */
 
-@keyframes logo-spin {
+/* @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -120,7 +123,7 @@ header {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 
@@ -306,7 +309,7 @@ input[type="text"] {
 }
 
 .intro p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(61, 3, 42, 0.7);
 }
 
 .intro__stack {

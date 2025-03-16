@@ -1,0 +1,46 @@
+.div1{
+    display: flex;
+    justify-content: flex-end;
+    color:#064523;
+    padding: 3px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+  
+  
+  .logo {
+ 
+    background-color: lightgreen ;
+    /* height: 3em; */
+    padding: 1em;
+    will-change: filter;
+    transition: filter 300ms;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: logo-spin infinite 20s linear;
+    border-radius: 50%;
+    /* border: 1px solid black; */
+
+    min-width: 70px;
+   aspect-ratio: 1/1;
+  
+  
+
+  
+    &:hover {
+      filter: drop-shadow(0 0 10em #075f22aa);
+  
+    }
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

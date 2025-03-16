@@ -7,27 +7,41 @@ import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { User } from '@/demo/auth/User';
+import { remult } from "remult";
 
 
-export function MenuByUser(userId:string) {
+export function MenuByUser({userId}: {userId: string | undefined}) {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
+        // [menus, setMenus] = useState<Menu[]>([]),
         [data, setData] = useState<UsersMeal[]>([]);
-
-
+const 
+data1 =  repo(UsersMeal)
+.findFirst(
+    {userId:userId },
+    {include: {
+        user: true,
+    }
+    
+});
 
     useEffect(() => {
-
         repo(UsersMeal)
-            .find({where:{ userId: userId } })
-            .then(setData)
+            .find(
+               {
+                include: {
+                    user: true,
+                },
+                where: { userId:userId }
+            }
+            )
+             .then(setData)
             .catch(setError)
             .finally(() => setLoading(false));
-    }, []);
+    }, [userId]);
 
     if (error) return <ErrorInfo error={error} />
-
 
 
     // async function addMenuByUser(menuId: number) {
@@ -52,16 +66,14 @@ export function MenuByUser(userId:string) {
 
 
     return <div >
-
         {loading ? <Spinner /> :
-
             <ul >
-                {data?.map(el => <li key={el.userId}><p>{el.menuId}</p>
-
+                {data.map(menuUser => <li key={menuUser.userId}><p>{menuUser.menuId}</p>
                 </li>)}
             </ul>
-
+            
         }
+
 
     </div >
 

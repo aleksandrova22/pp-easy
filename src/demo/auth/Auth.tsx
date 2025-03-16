@@ -17,10 +17,10 @@ export default function Auth() {
               Make sure to set the <code>AUTH_SECRET</code> in the{" "}
               <code>.env</code> file. <br />
               Read more at{" "}
-              <a href="https://errors.authjs.dev#missingsecret">auth.js docs</a>
+              {/* <a href="https://errors.authjs.dev#missingsecret">auth.js docs</a> */}
               .
               <br />
-              Please check the server terminal console for more information.
+              Для получения дополнительной информации проверьте консоль терминала сервера.
             </>,
           );
         }
@@ -39,11 +39,11 @@ export default function Auth() {
     content = (
       <>
         <p>
-          You are authenticated as <strong>{remult.user?.name}</strong>
+          Вы вошли как <strong>{remult.user?.name}</strong>
         </p>
         <div className="button-row">
           <a className="button" href="/api/auth/signout">
-            Sign Out
+            Выйти
           </a>
         </div>
       </>
@@ -51,14 +51,12 @@ export default function Auth() {
   } else {
     content = (
       <>
-        <p>You are currently not authenticated</p>
+        <p>Вы не авторизованы</p>
         <div className="button-row">
           <a className="button" href="/api/auth/signin">
-            Sign In
+            Войти
           </a>
-          <a className="button" target="_blank" href="https://authjs.dev">
-            Auth.js Docs
-          </a>
+
         </div>
       </>
     );
@@ -66,7 +64,7 @@ export default function Auth() {
 
   return (
     <Tile
-      title="Auth"
+      title="Вход"
       status={status}
       subtitle={tileSubtitle}
       className="auth"

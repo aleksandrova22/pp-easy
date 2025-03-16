@@ -2,6 +2,7 @@ import { Entity, Field, Fields } from "remult"
 import { Relations } from "remult"
 import { User } from "@/demo/auth/User";
 import { Meal } from "./Meal";
+import { UsersMeal } from "./UsersMeal";
 
 
 @Entity<Menu>("menu", {
@@ -26,15 +27,14 @@ export class Menu {
 
   @Fields.string({ allowNull: true })
   recipe?: string
- 
+
   @Fields.integer({ allowNull: true })
   mealId?: number
 
   @Relations.toOne(() => Meal, { field: "mealId" })
   meal?: Meal
 
-  // Relations toMany
-  // @Relations.toMany(() => StudentSubject)
-  // _StudentSubjects?: StudentSubject[]
+  @Relations.toMany(() => UsersMeal)
+  _UsersMeal?: UsersMeal[]
 
 }
