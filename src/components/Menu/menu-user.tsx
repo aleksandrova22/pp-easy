@@ -11,7 +11,7 @@ import { remult } from "remult";
 import { OneDish } from './one-dish';
 
 
-export function MenuByUser(userIds: number) {
+export function MenuByUser() {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),

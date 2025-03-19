@@ -18,11 +18,11 @@ const authConfig: NextAuthConfig = {
       credentials: {
         name: {
           type: "text", // The input field for username
-          placeholder: "Try Jane or Steve", // Instructional placeholder for demo purposes
+          placeholder: "Helen", // Instructional placeholder for demo purposes  Try Jane or Steve
         },
         password: {
           type: "password", // The input field for password
-          placeholder: "Jane123 or Steve123", // Instructional placeholder for demo purposes
+          placeholder: " ", // Instructional placeholder for demo purposes  Jane123 or Steve123
         },
       },
       authorize: (credentials) =>
