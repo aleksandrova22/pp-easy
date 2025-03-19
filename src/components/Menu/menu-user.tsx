@@ -8,35 +8,34 @@ import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { User } from '@/demo/auth/User';
 import { remult } from "remult";
+import { OneDish } from './one-dish';
 
 
-export function MenuByUser({userId}: {userId: string | undefined}) {
+export function MenuByUser(userIds: number) {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
-        // [menus, setMenus] = useState<Menu[]>([]),
+        [user, setUser] = useState<User[]>([]),
+        [menus, setMenus] = useState<Menu[]>([]),
+        [usermeals, setUsermeals] = useState<UsersMeal[]>([]),
+        //  [userId, setUserId] = useState(remult.user?.id),
+          userId = remult.user?.id,
+        menusByUsers = Object.groupBy(usermeals, usermeal => usermeal.userId),
+        userIDs = Object.keys(menusByUsers),
         [data, setData] = useState<UsersMeal[]>([]);
-// const 
-// data1 =  repo(UsersMeal)
-// .findFirst(
-//     {userId:userId },
-//     {include: {
-//         user: true,
-//     }
-    
-// });
-
+//         const  data1 = await repo(UsersMeal).findFirst(  { userId: userId });
+ {console.log(repo(UsersMeal).findFirst(  { userId: userId }));}
     useEffect(() => {
         repo(UsersMeal)
             .find(
-               {
-                include: {
-                    user: true,
-                },
-                where: { userId:userId }
-            }
+                {
+                    include: {
+                        user: true,
+                    },
+                    where: { userId: userId }
+                }
             )
-             .then(setData)
+            .then(setData)
             .catch(setError)
             .finally(() => setLoading(false));
     }, [userId]);
@@ -56,7 +55,7 @@ export function MenuByUser({userId}: {userId: string | undefined}) {
     //     } catch (err) {
     //         // toster
     //     } finally {
-    //         const data = await repo(UsersMeal).find();
+    //         const data = await repo(UsersMeal).findFirst(  { userId: userId });
     //         setData(data);
     //     }
 
@@ -67,12 +66,43 @@ export function MenuByUser({userId}: {userId: string | undefined}) {
 
     return <div >
         {loading ? <Spinner /> :
-            <ul >
-                {data.map(menuUser => <li key={menuUser.userId}><p>{menuUser.menuId}</p>
-                </li>)}
-            </ul>
-            
+        <div>
+              {data.map(userMeal => 
+<OneDish key = {userMeal.id} dishId = {userMeal.menuId}/>
+
+              )}
+            </div>
+            // <ul >
+            //     {data.map(menuUser => <li key={menuUser.userId}><p>{menuUser.menuId}</p>
+            //     </li>)}
+            // </ul>
         }
+
+{/* 
+        <table >
+            <caption>ffff</caption>
+            <thead>
+                <tr>
+                    <th>user</th>
+                    <th>Points</th>
+                    <th>add</th>
+                </tr>
+            </thead>
+            <tbody>
+                {userIDs.map((stID) =>
+
+                    <tr key={stID}>
+                        <td>{menusByUsers}</td>
+                        <td>{menusByUsers[stID].map(({ userId }) => userId).join(', ')}</td>
+                        <td>
+                            <button type="submit">add</button>
+
+                        </td>
+                    </tr>
+
+                )}
+            </tbody>
+        </table>; */}
 
 
     </div >

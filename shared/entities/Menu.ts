@@ -29,10 +29,10 @@ export class Menu {
   recipe?: string
 
   @Fields.integer({ allowNull: true })
-  mealId?: number
+  mealId!: number
 
   @Relations.toOne(() => Meal, { field: "mealId" })
-  meal?: Meal
+  meal!: Meal
 
   @Relations.toMany(() => UsersMeal)
   _UsersMeal?: UsersMeal[]

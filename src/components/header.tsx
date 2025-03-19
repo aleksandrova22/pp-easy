@@ -20,9 +20,13 @@ export default function Header({ children = null }: { children: ReactNode }) {
   console.log(pathname)
   return <header>
     {children}
-    <div className={classes.div1}> <Image className={classes.logo} src={"/logo.png"} width={90} height={90} alt="Picture of the author" /></div>
-    <nav>
+    <nav className={classes.header}>
+      
       <ul>
+       <li><div> Легкий старт к стройности
+        <br/>
+    <Image className={classes.logo} src={"/logo.png"} width={70} height={70} alt="Picture of the author" />
+    </div></li>
         {pages.map(({ href, title }) =>
           <li key={href} className={pathname === href ? 'active' : ''}>
             <Link href={href}>{title} </Link>

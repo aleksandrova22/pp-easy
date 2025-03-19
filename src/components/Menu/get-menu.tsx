@@ -7,9 +7,8 @@ import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { User } from '@/demo/auth/User';
-import { MenuByUser } from './menu-user';
 import { remult } from "remult";
-
+import { OneDish } from './one-dish';
 
 
 
@@ -17,15 +16,14 @@ export function GetMenu() {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
-        [data, setData] = useState<Menu[]>([]),
-        [users, setUsers] = useState<User[]>([]);
-    // menusByUsers = Object.groupBy(users, user => user.id),
-    // usersIDs = Object.keys(menusByUsers);
-
-
+        [data, setData] = useState<Menu[]>([]);
+        // [usersmeals, setUsersmeals] = useState<UsersMeal[]>([]),
+        // menuByUsers = Object.groupBy(usersmeals, usermeals => usermeals?.userId);
+      
     useEffect(() => {
         repo(Menu)
-            .find()
+            .find(               
+            )
             .then(setData)
             .catch(setError)
             .finally(() => setLoading(false));
@@ -34,47 +32,56 @@ export function GetMenu() {
     if (error) return <ErrorInfo error={error} />
 
 
+    async function addMenuByUser(menuId: number) {
+        const optimisticMenuByUser = new UsersMeal;
+        // optimisticMenuByUser.userId = newTaskTitle;
+        // optimisticMenuByUser.temp = true;
+        //setData([...data]);
+        try {
+            
+            const customers = await repo(UsersMeal).find({
+                include: {
+                    user: true
+                },
+              });
+            
 
-    // async function addMenuByUser(menuId: number) {
-    //     const optimisticMenuByUser = new UsersMeal;
-    //      optimisticMenuByUser.userId = newTaskTitle;
-    //      optimisticMenuByUser.temp = true;
-    //      setData([...data]);
-    //     try {
-    //         const
-    //             newUsersMeal = await repo(UsersMeal).insert({ menuId: menuId, userId: "1" });
+        } catch (err) {
+            // toster
+        } finally {
+            // const list = await repo(UsersMeal).find();
+             //setData(customers);
+            
+            // const  newItem = await repo(UsersMeal).find({
+            //     include: {
+            //         user: true, menu: true
+            //     }
+            //   }).insert({ menuId: menuId});
 
-    //     } catch (err) {
-    //         // toster
-    //     } finally {
-    //         const data = await repo(UsersMeal).find();
-    //         setData(data);
-    //     }
+        }
 
-    //     const res = await repo(UsersMeal).insert(data);
+       // const res = await repo(UsersMeal).insert(data);
 
-    // }
+    }
 
-     
-    
-    // {if (!remult.user?.id) return <>Авторизируйтесь!</> }
-
+    // {if (!remult.user.id) return <>Авторизируйтесь!</> }
 
     return <div className={classes.meal}>
-      
         {loading ? <Spinner /> :
+         data?.map(el=><OneDish dishId={el.id}/>)
+            // <ul className={classes.meal}>
+            //     {data?.map(menus => <li key={menus.id}><p>{menus.name}</p><p>КБЖУ:{menus.energy}</p>
+            //         <Image src={"/" + menus?.photo} width={200} height={200} alt="Picture of the author" />
+            //         <br /> Рецепт: <p>{menus.recipe}</p>
 
-            <ul className={classes.meal}>
-                {data?.map(menus => <li key={menus.id}><p>{menus.name}</p><p>КБЖУ:{menus.energy}</p>
-                    <Image src={"/" + menus?.photo} width={200} height={200} alt="Picture of the author" />
-                    <br /> Рецепт: <p>{menus.recipe}</p>
-                    {/* <button onClick={addMenuByUser(menus.id)} > Добавить в мои блюда </button> */}
-                </li>)}
-            </ul>
+            //         <button onClick={addMenuByUser(menus.id)} > Добавить в мои блюда </button>
+            //     </li>)}
+            // </ul>
+
         }
 
 
-    </div >
+    </div>
 
 }
 

@@ -1,0 +1,62 @@
+.dish {
+    box-sizing: border-box;
+    width: min-content;
+    background-color: #dcdcdc;
+    overflow-y: auto;
+    padding: 0.2em;
+    /* border-radius: .5em; */
+    /* display: flex; */
+    color: black;
+
+    & .onedish {
+        padding: 1em;
+        background-color: #dcdcdc;
+        border-radius: 1em;
+        margin: 0.5em;
+        border: 1px solid green;
+
+        min-width: min-content;
+
+        & span {
+            color: rgba(128, 128, 128, 0.122);
+        }
+
+
+        & .span {
+            color: green;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        & button {
+
+            border: 1px solid gray;
+            border-radius: 5px;
+            font-size: small;
+            font-weight: bold;
+            color: white;
+            background-color: green;
+
+        }
+   
+
+    }
+
+
+    & img {
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+
+    & fieldset {
+
+        display: flexbox;
+
+
+        & fieldset:hover {
+            cursor: pointer;
+        }
+    }
+}

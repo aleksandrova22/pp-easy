@@ -1,6 +1,5 @@
 "use client"
 import { MenuByUser } from "@/components/Menu/menu-user";
-import { remult } from "remult";
 
 
 export default function PageUserMemu() {
@@ -12,7 +11,7 @@ export default function PageUserMemu() {
       сумма ккал: 
       <hr /> 
       отображение меню
-      {/* <h2> <MenuByUser userId={remult.user?.id} /></h2> */}
+      <h2> <MenuByUser /></h2>
      
     </>
   }

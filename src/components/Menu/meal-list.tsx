@@ -6,7 +6,6 @@ import classes from './meal-list.module.css';
 import { Meal } from '../../../shared/entities/Meal';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
-import { User } from '@/demo/auth/User';
 
 
 export function MealList() {
@@ -14,8 +13,6 @@ export function MealList() {
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
         [list, setList] = useState<Meal[]>([]);
-
-       
 
     useEffect(() => {
         repo(Meal)
@@ -26,12 +23,9 @@ export function MealList() {
     }, []);
 
     if (error) return <ErrorInfo error={error} />
- 
+
 
     return <div className={classes.meal}>
-
-<div>{ }</div>
-
 
         {loading ? <Spinner /> :
 

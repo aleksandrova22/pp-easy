@@ -12,16 +12,13 @@ export class UsersMeal {
     id = 0
 
     @Fields.string({ allowNull: true })
-    userId?: string
+    userId!: string
 
     @Relations.toOne(() => User, { field: "userId" })
-    user?: User
+    user!: User
 
     @Fields.integer({ allowNull: true })
-    menuId?: number
-
-    //   @Relations.toOne(() => Menu, { field: "menuId" })
-    //   meal?: Meal
+    menuId!: number
 
     @Relations.toOne(() => Menu, { field: "menuId" })
     menu!: Menu
