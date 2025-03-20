@@ -12,12 +12,13 @@ export function MenuByUser() {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
-        [user, setUser] = useState<User[]>([]),
+         [user, setUser] = useState<User[]>([]),
         [data, setData] = useState<UsersMeal[]>([]);
-        //  [userId, setUserId] = useState(remult.user?.id);
+        
+        // [userId, setUserId] = useState(remult.user?.id);
 
-        const
-         userId = remult.user?.id;
+        // const
+        //  userId = remult.user?.id;
 
 
     useEffect(() => {
@@ -26,13 +27,13 @@ export function MenuByUser() {
             .find(
                 {
                    include: {user: true},
-                    where: { userId: userId}
+                    where: { userId: remult.user?.id}
                 }
             )
-            .then(setData, setUser)
+            .then(setData)
             .catch(setError)
             .finally(() => setLoading(false));
-    }, [userId]);
+    }, [remult.user?.id]);
 
     if (error) return <ErrorInfo error={error} />
 

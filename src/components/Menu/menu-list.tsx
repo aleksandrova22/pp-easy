@@ -42,7 +42,7 @@ export function MenuList() {
         } catch (error: any) {
             alert((error as { message: string }).message)
         }
-        console.log(remult.user?.id);
+        // console.log(remult.user?.id);
     }
 
     // {if (!remult.user.id) return <>Авторизируйтесь!</> }
