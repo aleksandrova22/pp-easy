@@ -30,7 +30,7 @@ export function MealList() {
         {loading ? <Spinner /> :
 
             list.map(meal => <div key={meal.id}><p>{meal.title}</p>
-                <button >  <Image src={"/" + meal?.img} width={200} height={200} alt="Picture of the author" />
+                <button >  <Image src={"/" + meal?.img} width={300} height={300} alt="Picture of the author" />
                 </button>
             </div>)
         }

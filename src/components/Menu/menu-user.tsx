@@ -17,11 +17,11 @@ export function MenuByUser() {
         [error, setError] = useState(null),
         [user, setUser] = useState<User[]>([]),
         [menus, setMenus] = useState<Menu[]>([]),
-        [usermeals, setUsermeals] = useState<UsersMeal[]>([]),
+        // [usermeals, setUsermeals] = useState<UsersMeal[]>([]),
         //  [userId, setUserId] = useState(remult.user?.id),
           userId = remult.user?.id,
-        menusByUsers = Object.groupBy(usermeals, usermeal => usermeal.userId),
-        userIDs = Object.keys(menusByUsers),
+        // menusByUsers = Object.groupBy(usermeals, usermeal => usermeal.userId),
+        // userIDs = Object.keys(menusByUsers),
         [data, setData] = useState<UsersMeal[]>([]);
 //         const  data1 = await repo(UsersMeal).findFirst(  { userId: userId });
  {console.log(repo(UsersMeal).findFirst(  { userId: userId }));}
@@ -72,37 +72,10 @@ export function MenuByUser() {
 
               )}
             </div>
-            // <ul >
-            //     {data.map(menuUser => <li key={menuUser.userId}><p>{menuUser.menuId}</p>
-            //     </li>)}
-            // </ul>
+           
         }
 
-{/* 
-        <table >
-            <caption>ffff</caption>
-            <thead>
-                <tr>
-                    <th>user</th>
-                    <th>Points</th>
-                    <th>add</th>
-                </tr>
-            </thead>
-            <tbody>
-                {userIDs.map((stID) =>
 
-                    <tr key={stID}>
-                        <td>{menusByUsers}</td>
-                        <td>{menusByUsers[stID].map(({ userId }) => userId).join(', ')}</td>
-                        <td>
-                            <button type="submit">add</button>
-
-                        </td>
-                    </tr>
-
-                )}
-            </tbody>
-        </table>; */}
 
 
     </div >

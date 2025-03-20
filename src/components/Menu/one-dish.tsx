@@ -47,7 +47,7 @@ export function OneDish({ dishId }: { dishId: number }) {
                             {isVisible && <p>{dish.recipe}</p>}
                         </article>
                         <br />
-                        <button onClick={() => MenuByUser(dish.id)} >❌ Удалить из моего меню </button>
+                        <button onClick={() => {}} >❌ Удалить из моего меню </button>
                     </div>
                 )}
             </div>
