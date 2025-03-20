@@ -24,7 +24,7 @@ export function MenuByUser() {
         // userIDs = Object.keys(menusByUsers),
         [data, setData] = useState<UsersMeal[]>([]);
 //         const  data1 = await repo(UsersMeal).findFirst(  { userId: userId });
- {console.log(repo(UsersMeal).findFirst(  { userId: userId }));}
+//  {console.log(repo(UsersMeal).findFirst(  { userId: userId }));}
     useEffect(() => {
         repo(UsersMeal)
             .find(
