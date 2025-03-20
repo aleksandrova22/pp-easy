@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { repo } from 'remult';
-import Image from 'next/image';
+// import Image from 'next/image';
 import classes from './menu-list.module.css';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
-import { User } from '@/demo/auth/User';
+// import { User } from '@/demo/auth/User';
 import { remult } from "remult";
 import { OneDish } from './one-dish';
 

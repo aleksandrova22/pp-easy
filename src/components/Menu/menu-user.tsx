@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import { repo, remult } from 'remult';
-import Image from 'next/image';
-import classes from './meal-list.module.css';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { User } from '@/demo/auth/User';
 import { OneDish } from './one-dish';
-// import { useStore } from '@nanostores/react';
-//import { $userId } from '../../../store/userId';
 
 
 export function MenuByUser() {
