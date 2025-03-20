@@ -46,8 +46,7 @@ export function OneDish({ dishId }: { dishId: number }) {
                         <button onClick={() => setIsVisible(!isVisible)}> {(isVisible) ? 'Скрыть рецепт' : 'Показать рецепт'}  </button>
                             {isVisible && <p>{dish.recipe}</p>}
                         </article>
-                        <br />
-                        <button onClick={() => {}} >❌ Удалить из моего меню </button>
+                      
                     </div>
                 )}
             </div>

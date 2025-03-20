@@ -25,17 +25,17 @@ export function MealList() {
     if (error) return <ErrorInfo error={error} />
 
 
-    return <div className={classes.meal}>
-
+    return <>
         {loading ? <Spinner /> :
 
-            list.map(meal => <div key={meal.id}><p>{meal.title}</p>
-                <button >  <Image src={"/" + meal?.img} width={300} height={300} alt="Picture of the author" />
-                </button>
-            </div>)
-        }
+            <div className={classes.meal}>
+                {list.map(meal => <div key={meal.id} ><p>{meal.title}</p>
+                    <Image src={"/" + meal?.img} width={200} height={200} alt="Picture of the author" />
 
-    </div>
+                </div>)}
+            </div>
+        }
+    </>
 
 }
 

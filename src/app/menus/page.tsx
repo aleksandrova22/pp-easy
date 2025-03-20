@@ -1,14 +1,13 @@
 "use client"
-// рецепты
 
-import { GetMenu } from "@/components/Menu/get-menu"
 
+import { MenuList } from "@/components/Menu/menu-list";
 
 
 export default function PageMenu() {
     return <>
         <h1>Рецепты к рассчетом КБЖУ</h1>
-        <GetMenu />
+        <MenuList />
 
     </>
 }

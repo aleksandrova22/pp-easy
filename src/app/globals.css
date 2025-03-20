@@ -9,15 +9,15 @@
 }
 
 :root {
-  --color-dark: #c1f3bd;
+  --color-dark: #118a35;
   --color-darker: rgb(227, 242, 227);
-  --color-darkest: #0c8343;
+  --color-darkest: #36a732;
 
-  --color-light: #0a1c06;
-  --color-lighter: #eee;
-  --color-lightest: #fff;
+  --color-light: #176106;
+  --color-lighter: #078d34;
+  --color-lightest: #d0eed8;
 
-  --color-green: #0c8343;
+  --color-green: #58ac66;
   --color-blue: #0d84ff;
   --color-red: #ff443b;
   --color-yellow: #ffa00a;
@@ -53,13 +53,21 @@ body {
 }
 
 h1 {
-  color: #0c8343;
+  color: #17420a;
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
+  font-size: medium;
+}
+
+h2 {
+  color: #4e6813;
+  margin: 5px;
+  padding: 5px;
+  font-weight: bold;
 }
 
 header {
-  background-color: lightgreen;
+  background-color: rgb(122, 247, 149);
   font-size: large;
   padding: 10px;
 
@@ -531,7 +539,7 @@ input[type="text"] {
 /*
 * Todo
 */
-
+/* 
 .todo {
   display: flex;
   flex-direction: column;
@@ -588,4 +596,4 @@ input[type="text"] {
   color: var(--color-light);
   padding: 12px;
   text-align: center;
-}
+} */

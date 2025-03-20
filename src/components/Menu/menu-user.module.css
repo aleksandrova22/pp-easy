@@ -1,0 +1,15 @@
+.menu {
+    display: flex;
+
+    & button {
+
+        border: 1px solid gray;
+        border-radius: 5px;
+        font-size: small;
+        font-weight: bold;
+        color: white;
+        background-color: green;
+
+    }
+
+}

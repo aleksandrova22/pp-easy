@@ -2,11 +2,20 @@
 .meal {display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 10px;
+
+
+  & div {display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: min-content;
+  justify-items: center;}
 
    & img {
       aspect-ratio: 1/1;
       border-radius: 50%;
       cursor: pointer;
+  
     }
 
     & p {

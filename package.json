@@ -15,7 +15,7 @@
     "pg": "^8.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "remult": "^2.7.31"
+    "remult": "^2.7.32"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
