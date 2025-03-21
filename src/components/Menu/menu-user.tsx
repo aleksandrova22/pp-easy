@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react';
 import { repo, remult } from 'remult';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
-import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
-import { User } from '@/demo/auth/User';
 import { OneDish } from './one-dish';
 import useSWR from 'swr';
 
 const
     API_URL = '/api/users/',
 
-    fetcher = async (userId: string) => {
-        const response = await fetch(API_URL + userId);
+    fetcher = async () => {
+        const response = await fetch(API_URL + remult.user?.id);
         if (!response.ok) throw new Error('fetch ' + response.status);
         return await response.json();
     };
@@ -23,7 +21,7 @@ const
 function useUser() {
     const
        // userId = remult.user?.id,
-        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : undefined, fetcher);
+        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : null, fetcher);
     return {
         user: data,
         isLoading: !error && !data,
@@ -40,7 +38,7 @@ export function MenuByUser() {
     // if (!user?.id) return;
 
     useEffect(() => {
-        if (!user?.id) return;
+        if (!user) return;
         const fetchData = async () => {
             try {
                 const
@@ -49,7 +47,7 @@ export function MenuByUser() {
                             .find(
                                 {
                                     include: { user: true },
-                                    where: { userId: user.id }
+                                    where: { userId: user?.id }
                                 });
                 setData(meals);
             } catch (err: any) { setError(err); }
