@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { repo, remult } from 'remult';
+import { repo, remult, withRemult } from 'remult';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { OneDish } from './one-dish';
 import useSWR from 'swr';
 
+
 const
     API_URL = '/api/users/',
 
     fetcher = async () => {
+        if (!remult.user) {throw new Error('Нет авторизации!') }
         const response = await fetch(API_URL + remult.user?.id);
         if (!response.ok) throw new Error('fetch ' + response.status);
         return await response.json();
@@ -20,14 +22,15 @@ const
 
 function useUser() {
     const
-       // userId = remult.user?.id,
-        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : null, fetcher);
+        userId = remult.user?.id,
+        { data, error, isLoading } = useSWR(userId ? userId : null, fetcher);
     return {
         user: data,
         isLoading: !error && !data,
         isError: error
     }
 };
+
 
 export function MenuByUser() {
     const
@@ -38,7 +41,7 @@ export function MenuByUser() {
     // if (!user?.id) return;
 
     useEffect(() => {
-        if (!user) return;
+        if ((!remult.user)) return;
         const fetchData = async () => {
             try {
                 const
@@ -53,7 +56,7 @@ export function MenuByUser() {
             } catch (err: any) { setError(err); }
         };
         fetchData();
-    }, [user]);
+    }, [remult.user]);
 
     if (error) return <ErrorInfo error={error} />
 
@@ -67,7 +70,7 @@ export function MenuByUser() {
         }
     }
 
-    if (!user) return <h2>Авторизируйтесь!</h2>
+     if (!remult.user) return <h2>Авторизируйтесь!</h2>
     return <>
         {
             isLoading ? <Spinner /> :
@@ -82,5 +85,7 @@ export function MenuByUser() {
                 </div>
         }
     </>
-}
+};
+
+
 
