@@ -12,6 +12,7 @@ const
     { href: '/menus', title: 'Рецепты' },
     { href: '/menubyuser', title: 'Мое меню' },
     { href: '/contact', title: 'Контакты' },
+    { href: '/authorize', title: 'Авторизация' },
 
   ];
 

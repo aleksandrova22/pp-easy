@@ -11,8 +11,9 @@ const
     API_URL = '/api/users/',
 
     fetcher = async () => {
-        if (!remult.user) {throw new Error('Нет авторизации!') }
-        const response = await fetch(API_URL + remult.user?.id);
+        const userId = remult.user?.id || '';
+        if (userId) {throw new Error('Нет авторизации!') }
+        const response = await fetch(API_URL + userId);
         if (!response.ok) throw new Error('fetch ' + response.status);
         return await response.json();
     };
@@ -32,7 +33,7 @@ function useUser() {
 };
 
 
- function MenuByUser() {
+ export function MenuByUser() {
     const
         [error, setError] = useState(null),
         { user, isLoading } = useUser(),
@@ -41,7 +42,7 @@ function useUser() {
     // if (!user?.id) return;
 
     useEffect(() => {
-        if ((!remult.user)) return;
+        if ((!remult.user?.id)) return;
         const fetchData = async () => {
             try {
                 const
@@ -56,7 +57,7 @@ function useUser() {
             } catch (err: any) { setError(err); }
         };
         fetchData();
-    }, [remult.user]);
+    }, [remult.user?.id]);
 
     if (error) return <ErrorInfo error={error} />
 
@@ -70,13 +71,13 @@ function useUser() {
         }
     }
 
-     if (!remult.user) return <h2>Авторизируйтесь!</h2>
+     if (!remult.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
         {
             isLoading ? <Spinner /> :
 
-                <div>  <h2>Привет, {user?.name}! <br />Твое меню: </h2>
-                    {data.map(userMeal => <div key={userMeal.id}>
+                <div>  <h2>Привет, {remult.user?.name}! <br />Твое меню: </h2>
+                    {data.map(userMeal => <div>
                         <OneDish key={userMeal.id} dishId={userMeal.menuId} />
                         <br />
                         <button onClick={() => deleteDishUser(userMeal)}>❌ Удалить из моего меню</button>
@@ -86,8 +87,3 @@ function useUser() {
         }
     </>
 };
-
-
-
-
-
