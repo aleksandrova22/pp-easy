@@ -18,34 +18,45 @@ export function MenuList() {
         [data, setData] = useState<Menu[]>([]),
         [userId, setUserId] = useState(null),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
-    // [usersmeals, setUsersmeals] = useState<UsersMeal[]>([]),
-    // menuByUsers = Object.groupBy(usersmeals, usermeals => usermeals?.userId);
 
     useEffect(() => {
-        repo(Menu)
-            .find(
-        )
-            .then(setData)
-            .catch(setError)
-            .finally(() => setLoading(false));
+        loadMenu();
+        loadUserMeals();
     }, []);
+
+    const loadMenu = async () => {
+        setLoading(true);
+        try {
+            const menuData = await repo(Menu).find();
+            setData(menuData);
+        }
+        catch (err: any) { setError(err) }
+        finally { setLoading(false); }
+    };
+
+    const loadUserMeals = async () => {
+        if (remult.user?.id) {
+            try {
+                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
+                setUserMeal(userMeals);
+            } catch (err: any) { setError(err) }
+        }
+    };
+
 
     if (error) return <ErrorInfo error={error} />
 
 
     //добавление в свои блюда
     async function addDishUser(el: number) {
-        // e.preventDefault()
         try {
             await repo(UsersMeal).insert({ userId: remult.user?.id, menuId: el })
-            setUserMeal([])
+            loadUserMeals();
         } catch (error: any) {
             alert((error as { message: string }).message)
         }
-        // console.log(remult.user?.id);
-    }
 
-    // {if (!remult.user.id) return <>Авторизируйтесь!</> }
+    }
 
     return <div className={classes.menu}>
         {loading ? <Spinner /> :
