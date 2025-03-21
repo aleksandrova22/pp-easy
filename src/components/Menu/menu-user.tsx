@@ -22,8 +22,8 @@ const
 
 function useUser() {
     const
-        userId = remult.user?.id,
-        { data, error, isLoading } = useSWR(userId ? userId : null, fetcher);
+       // userId = remult.user?.id,
+        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : undefined, fetcher);
     return {
         user: data,
         isLoading: !error && !data,
