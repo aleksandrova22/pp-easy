@@ -65,7 +65,7 @@ export function MenuByUser() {
             await repo(UsersMeal).delete(dish);
             setData((prev) => prev.filter(meal => meal.id != dish.id));
         } catch (error: any) {
-            alert((error as { message: string }).message)
+            setError(error)
         }
     }
 
@@ -83,9 +83,6 @@ export function MenuByUser() {
                     )}
                 </div>
         }
-
-
     </>
-
 }
 

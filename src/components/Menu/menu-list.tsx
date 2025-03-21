@@ -6,7 +6,6 @@ import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
-// import { User } from '@/demo/auth/User';
 import { remult } from "remult";
 import { OneDish } from './one-dish';
 
@@ -16,32 +15,31 @@ export function MenuList() {
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
-        [userId, setUserId] = useState(null),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
 
+        const loadMenu = async () => {
+            setLoading(true);
+            try {
+                const menuData = await repo(Menu).find();
+                setData(menuData);
+            }
+            catch (err: any) { setError(err) }
+            finally { setLoading(false); }
+        };
+    
+        const loadUserMeals = async () => {
+            if (remult.user?.id) {
+                try {
+                    const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
+                    setUserMeal(userMeals);
+                } catch (err: any) { setError(err) }
+            }
+        };
+    
     useEffect(() => {
         loadMenu();
         loadUserMeals();
     }, []);
-
-    const loadMenu = async () => {
-        setLoading(true);
-        try {
-            const menuData = await repo(Menu).find();
-            setData(menuData);
-        }
-        catch (err: any) { setError(err) }
-        finally { setLoading(false); }
-    };
-
-    const loadUserMeals = async () => {
-        if (remult.user?.id) {
-            try {
-                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
-                setUserMeal(userMeals);
-            } catch (err: any) { setError(err) }
-        }
-    };
 
 
     if (error) return <ErrorInfo error={error} />
@@ -53,7 +51,7 @@ export function MenuList() {
             await repo(UsersMeal).insert({ userId: remult.user?.id, menuId: el })
             loadUserMeals();
         } catch (error: any) {
-            alert((error as { message: string }).message)
+            setError(error)
         }
 
     }
