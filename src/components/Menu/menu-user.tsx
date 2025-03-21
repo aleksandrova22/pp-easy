@@ -22,8 +22,8 @@ const
 
 function useUser() {
     const
-        userId = remult.user?.id,
-        { data, error, isLoading } = useSWR(userId ? userId : null, fetcher);
+        //userId = remult.user?.id,
+        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : null, fetcher);
     return {
         user: data,
         isLoading: !error && !data,
@@ -32,7 +32,7 @@ function useUser() {
 };
 
 
-export function MenuByUser() {
+ function MenuByUser() {
     const
         [error, setError] = useState(null),
         { user, isLoading } = useUser(),
@@ -50,7 +50,7 @@ export function MenuByUser() {
                             .find(
                                 {
                                     include: { user: true },
-                                    where: { userId: user?.id }
+                                    where: { userId: remult.user?.id }
                                 });
                 setData(meals);
             } catch (err: any) { setError(err); }
@@ -86,6 +86,8 @@ export function MenuByUser() {
         }
     </>
 };
+
+
 
 
 
