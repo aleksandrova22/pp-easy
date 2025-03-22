@@ -34,23 +34,33 @@ import { User } from '@/demo/auth/User';
 // };
 
 
+const 
+user = async ()=> await
+                    repo(User)
+                        .findFirst(
+                            {
+                                id: remult.user?.id 
+                            });
+
+
+
 export function MenuByUser() {
     const
         [error, setError] = useState(null),
         [loading, setLoading] = useState(true),
-        [userId, setUserId] = useState(remult.user?.id),
+       // [userId, setUserId] = useState(remult.user?.id),
         // { user, isLoading } = useUser(),
         [data, setData] = useState<UsersMeal[]>([]);
 
   
-        const 
-        user = async ()=> await
-                            repo(User)
-                                .findFirst(
-                                    {
+        // const 
+        // user = async ()=> await
+        //                     repo(User)
+        //                         .findFirst(
+        //                             {
 
-                                        id: remult.user?.id 
-                                    });
+        //                                 id: remult.user?.id 
+        //                             });
     // console.log(user);
 
     useEffect(() => {
@@ -68,7 +78,7 @@ export function MenuByUser() {
                                     where: { userId: remult.user?.id }
                                 });
                 setData(meals);
-                setUserId(userId);
+                //setUserId(userId);
             } catch (err: any) { setError(err); }
             setLoading(false);
         };
@@ -87,7 +97,7 @@ export function MenuByUser() {
         }
     }
 
-    if (!userId) return <h2>Авторизируйтесь!</h2>
+    if (!user) return <h2>Авторизируйтесь!</h2>
     return <>
         {
             loading ? <Spinner /> :
