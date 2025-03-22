@@ -5,46 +5,60 @@ import { Spinner } from '../spinner';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { OneDish } from './one-dish';
 import useSWR from 'swr';
+import { User } from '@/demo/auth/User';
 
 
-const
-    API_URL = '/api/users/',
+// const
+//     API_URL = '/api/users/',
 
-    fetcher = async () => {
-        const userId = remult.user?.id || '';
-        if (userId) {throw new Error('Нет авторизации!') }
-        const response = await fetch(API_URL + userId);
-        if (!response.ok) throw new Error('fetch ' + response.status);
-        return await response.json();
-    };
+//     fetcher = async () => {
+//         const userId = remult.user?.id || '';
+//         if (userId) {throw new Error('Нет авторизации!') }
+//         const response = await fetch(API_URL + userId);
+//         if (!response.ok) throw new Error('fetch ' + response.status);
+//         return await response.json();
+//     };
 
 // const
 // userId = remult.user?.id;
 
-function useUser() {
-    const
-        //userId = remult.user?.id,
-        { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : null, fetcher);
-    return {
-        user: data,
-        isLoading: !error && !data,
-        isError: error
-    }
-};
+// function useUser() {
+//     const
+//         //userId = remult.user?.id,
+//         { data, error, isLoading } = useSWR(remult.user?.id ? remult.user.id : null, fetcher);
+//     return {
+//         user: data,
+//         isLoading: !error && !data,
+//         isError: error
+//     }
+// };
 
 
- export function MenuByUser() {
+export function MenuByUser() {
     const
         [error, setError] = useState(null),
-        { user, isLoading } = useUser(),
+        [loading, setLoading] = useState(true),
+        [userId, setUserId] = useState(remult.user?.id),
+        // { user, isLoading } = useUser(),
         [data, setData] = useState<UsersMeal[]>([]);
 
-    // if (!user?.id) return;
+  
+        const 
+        user = async ()=> await
+                            repo(User)
+                                .findFirst(
+                                    {
+
+                                        id: remult.user?.id 
+                                    });
+    // console.log(user);
 
     useEffect(() => {
-        if ((!remult.user?.id)) return;
+
+                if (!user) return;
         const fetchData = async () => {
             try {
+                
                 const
                     meals = await
                         repo(UsersMeal)
@@ -54,10 +68,12 @@ function useUser() {
                                     where: { userId: remult.user?.id }
                                 });
                 setData(meals);
+                setUserId(userId);
             } catch (err: any) { setError(err); }
+            setLoading(false);
         };
         fetchData();
-    }, [remult.user?.id]);
+    }, []);
 
     if (error) return <ErrorInfo error={error} />
 
@@ -71,10 +87,10 @@ function useUser() {
         }
     }
 
-     if (!remult.user?.id) return <h2>Авторизируйтесь!</h2>
+    if (!userId) return <h2>Авторизируйтесь!</h2>
     return <>
         {
-            isLoading ? <Spinner /> :
+            loading ? <Spinner /> :
 
                 <div>  <h2>Привет, {remult.user?.name}! <br />Твое меню: </h2>
                     {data.map(userMeal => <div>
