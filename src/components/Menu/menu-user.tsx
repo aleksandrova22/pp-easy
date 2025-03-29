@@ -56,7 +56,7 @@ export function MenuByUser() {
             await repo(UsersMeal).delete(dish);
 
             setData((prev) => prev.filter(meal => meal.id != dish.id));
-            toast.success("Блюдо удалено");
+            toast.success("Удалено из вашего меню");
         } catch (error: any) {
             setError(error);
             toast.error("Ошибка при удалении");
@@ -87,7 +87,8 @@ export function MenuByUser() {
     if (!remult.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 
-        {!remult.user?.id ? <h2>Авторизируйтесь!</h2> : <div >
+        {
+        (!remult.user?.id) ? <h2>Авторизируйтесь!</h2> : <div >
             <h2>Привет, {remult.user?.name}! Твое меню: </h2>
             <h3>Всего ккал: {sumMenu}</h3>
 

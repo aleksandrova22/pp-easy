@@ -8,7 +8,7 @@ import { FormCalc } from "@/components/Home/FormCalc";
 export default function Calc() {
   return <>
    
-      <h1>📇 Калькулятор БЖУ</h1>
+      <h2>📇 Калькулятор КБЖУ</h2>
       <FormCalc />
 
     </>

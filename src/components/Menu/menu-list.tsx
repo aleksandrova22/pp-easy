@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { repo } from 'remult';
-// import Image from 'next/image';
 import classes from './menu-list.module.css';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
@@ -18,8 +17,7 @@ export function MenuList({ mealId }: { mealId: number | null }) {
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
-    let optimisticData;
-
+    
 
     const loadMenu = async (mealId: number) => {
         setLoading(true);
@@ -34,7 +32,7 @@ export function MenuList({ mealId }: { mealId: number | null }) {
     const loadUserMeals = async () => {
         if (remult.user?.id) {
             try {
-                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
+                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user?.id } });
                 setUserMeal(userMeals);
             } catch (err: any) { setError(err) }
         }
@@ -54,13 +52,6 @@ export function MenuList({ mealId }: { mealId: number | null }) {
             .finally(() => setLoading(false));
 
     }, [mealId]);
-
-
-    // 
-    // useEffect(() => {
-    // loadMenu();
-    // loadUserMeals();
-    // }, []);
 
 
     if (error) return <ErrorInfo error={error} />
