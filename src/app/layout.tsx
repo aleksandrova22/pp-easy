@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import Admin from "@/demo/Admin";
+
+import { Toaster } from "react-hot-toast";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +23,9 @@ export default function RootLayout({
           <Header> </Header>
         </header>
         <main>  {children}</main>
-
+        <Footer />
+        <Toaster  position="bottom-center"
+  />
       </body>
     </html>
   );

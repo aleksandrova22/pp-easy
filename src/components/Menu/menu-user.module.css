@@ -1,16 +1,23 @@
-.menu {
+.menuuser {
+
     display: flex;
-  
-   
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: min-content;
+
     & button {
 
         border: 1px solid gray;
         border-radius: 5px;
         font-size: small;
-        font-weight: bold;
+        white-space: inherit;
         color: white;
         background-color: green;
+
 
     }
 
 }
+
+

@@ -8,38 +8,59 @@ import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { remult } from "remult";
 import { OneDish } from './one-dish';
+import toast from 'react-hot-toast';
+import useSWR from 'swr';
 
 
-export function MenuList() {
+export function MenuList({ mealId }: { mealId: number | null }) {
     const
         [loading, setLoading] = useState(true),
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
+    let optimisticData;
 
-        const loadMenu = async () => {
-            setLoading(true);
+
+    const loadMenu = async (mealId: number) => {
+        setLoading(true);
+        try {
+            const menuData = await repo(Menu).find({ where: { mealId: mealId } });
+            setData(menuData);
+        }
+        catch (err: any) { setError(err) }
+        finally { setLoading(false); }
+    };
+
+    const loadUserMeals = async () => {
+        if (remult.user?.id) {
             try {
-                const menuData = await repo(Menu).find();
-                setData(menuData);
-            }
-            catch (err: any) { setError(err) }
-            finally { setLoading(false); }
-        };
-    
-        const loadUserMeals = async () => {
-            if (remult.user?.id) {
-                try {
-                    const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
-                    setUserMeal(userMeals);
-                } catch (err: any) { setError(err) }
-            }
-        };
-    
+                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user.id } });
+                setUserMeal(userMeals);
+            } catch (err: any) { setError(err) }
+        }
+    };
+
     useEffect(() => {
-        loadMenu();
-        loadUserMeals();
-    }, []);
+        if (mealId)
+            repo(Menu)
+                .find({ where: { mealId: mealId } })
+                .then(setData)
+                .catch(setError)
+                .finally(() => setLoading(false));
+        if (!mealId) repo(Menu)
+            .find()
+            .then(setData)
+            .catch(setError)
+            .finally(() => setLoading(false));
+
+    }, [mealId]);
+
+
+    // 
+    // useEffect(() => {
+    // loadMenu();
+    // loadUserMeals();
+    // }, []);
 
 
     if (error) return <ErrorInfo error={error} />
@@ -47,11 +68,18 @@ export function MenuList() {
 
     //добавление в свои блюда
     async function addDishUser(el: number) {
+      
         try {
-            await repo(UsersMeal).insert({ userId: remult.user?.id, menuId: el })
+            await repo(UsersMeal).insert({ userId: remult.user?.id, menuId: el });
+            toast.success("Добавлено в меню");
+            // optimisticData = await fetchProduct;
+            // await mutate(fetchProduct, {optimisticData, revalidate: true});
+
             loadUserMeals();
+
         } catch (error: any) {
-            setError(error)
+            setError(error);
+            toast.error('Ошибка при добавлении');
         }
 
     }
@@ -60,7 +88,6 @@ export function MenuList() {
         {loading ? <Spinner /> :
             data?.map(el => <div key={el.id}>
                 <OneDish dishId={el.id} />
-                <br />
                 <button onClick={() => addDishUser(el.id)}>Добавить в мое меню</button>
             </div>
             )

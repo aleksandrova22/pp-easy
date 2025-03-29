@@ -1,13 +1,14 @@
 "use client"
 
+import { MealList } from "@/components/Menu/meal-list"
 
-import { MenuList } from "@/components/Menu/menu-list";
 
-
+//без авторизации
 export default function PageMenu() {
-    return <>
-        <h1>Рецепты к рассчетом КБЖУ</h1>
-        <MenuList />
+  
 
-    </>
+  return <>
+       <h2>Полезные рецепты с рассчитанной калорийностью</h2>
+    <MealList  />
+  </>
 }
