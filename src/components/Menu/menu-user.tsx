@@ -87,8 +87,8 @@ export function MenuByUser() {
     if (!remult.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 
-        {
-        (!remult.user?.id) ? <h2>Авторизируйтесь!</h2> : <div >
+        
+         (!remult.user?.id) ? <h2>Авторизируйтесь!</h2> : <div >
             <h2>Привет, {remult.user?.name}! Твое меню: </h2>
             <h3>Всего ккал: {sumMenu}</h3>
 
@@ -104,7 +104,8 @@ export function MenuByUser() {
                         )}
                     </div>
             }
-        </div>}
+         </div>
+        
 
     </>
 };
