@@ -1,10 +1,10 @@
-'use client';
+ 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import classes from './header.module.css';
-import { Hamburger } from './Home/hamburger';
+ import { Hamburger } from './Home/hamburger';
 
 
 const
@@ -26,7 +26,7 @@ export default function Header({ children = null }: { children: ReactNode }) {
     <nav className={classes.header}>
 
       <ul>
-        <li><Hamburger /></li>
+        {/* <li><Hamburger /></li> */}
         <li> <a href='/'> Легкий старт к стройности
         </a>
         </li>

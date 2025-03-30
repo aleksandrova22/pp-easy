@@ -1,5 +1,6 @@
+"use client"
 import { useEffect, useState } from 'react';
-import { repo, remult } from 'remult';
+import { repo } from 'remult';
 import { ErrorInfo } from '../Error';
 import { Spinner } from '../spinner';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
@@ -9,10 +10,8 @@ import { User } from '@/demo/auth/User';
 import { Menu } from '../../../shared/entities/Menu';
 import classes from './menu-user.module.css';
 import toast from 'react-hot-toast';
-
-
-// const remult = await api.getRemult(),
-//remultUser = async ()=> (await api.getRemult()).repo(User).find({where: {id: remult.user?.id}}); 
+import { useSession } from "next-auth/react";
+import { getUserFromRequest } from '@/server/auth';
 
 
 
@@ -20,32 +19,41 @@ export function MenuByUser() {
     const
         [error, setError] = useState(null),
         [loading, setLoading] = useState(true),
-        // [userId, setUserId] = useState(remult.user?.id),
         [sumMenu, setSumMenu] = useState(0),
         [data, setData] = useState<UsersMeal[]>([]);
-
+        // [userSession, setUserSession] = useState<User[]>([]),
+        // user = {id: userSession, name: userSession};
+    const { data: session } = useSession();
+         
+    
 
     useEffect(() => {
 
-        if (!remult.user?.id) return;
+        if (!session?.user) {
+            setLoading(false);
+            return;
+        }
+
         const fetchData = async () => {
             try {
                 const
+               //userSession = await  repo(User).find({where: {id: session.user?.id}}),
+              
                     meals = await
                         repo(UsersMeal)
                             .find(
                                 {
                                     include: { user: true },
-                                    where: { userId: remult.user?.id }
+                                    where: { userId: session.user?.id}
                                 });
                 setData(meals);
                 //setSumMenu([...meals]);
-                //setUserId(userId);
+               // setUserSession(userSession);
             } catch (err: any) { setError(err); }
             setLoading(false);
         };
         fetchData();
-    }, []);
+    }, [session]);
 
     if (error) return <ErrorInfo error={error} />
 
@@ -84,19 +92,17 @@ export function MenuByUser() {
     };
 
 
-    if (!remult.user?.id) return <h2>Авторизируйтесь!</h2>
+     if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 
-        
-         (!remult.user?.id) ? <h2>Авторизируйтесь!</h2> : <div >
-            <h2>Привет, {remult.user?.name}! Твое меню: </h2>
+{ (!session?.user?.id)  ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {session?.user?.name}! Ваше меню: </h2>
             <h3>Всего ккал: {sumMenu}</h3>
-
             {
                 loading ? <Spinner /> :
 
                     <div className={classes.menuuser}>
-                        {data.map(userMeal => <div key={userMeal.id}>
+                        {data.map(userMeal => <div key={userMeal.id}> 
+                           
                             <OneDish dishId={userMeal.menuId} />
 
                             <button onClick={() => deleteDishUser(userMeal)}>❌ Удалить из моего меню</button>
@@ -104,8 +110,14 @@ export function MenuByUser() {
                         )}
                     </div>
             }
-         </div>
+
+ </div>
+
+}
         
+           
+      
+
 
     </>
 };

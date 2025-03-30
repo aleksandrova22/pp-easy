@@ -8,7 +8,7 @@ import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { remult } from "remult";
 import { OneDish } from './one-dish';
 import toast from 'react-hot-toast';
-import useSWR from 'swr';
+import { useSession } from "next-auth/react";
 
 
 export function MenuList({ mealId }: { mealId: number | null }) {
@@ -17,6 +17,7 @@ export function MenuList({ mealId }: { mealId: number | null }) {
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
+        const { data: session } = useSession();
     
 
     const loadMenu = async (mealId: number) => {
@@ -61,7 +62,7 @@ export function MenuList({ mealId }: { mealId: number | null }) {
     async function addDishUser(el: number) {
       
         try {
-            await repo(UsersMeal).insert({ userId: remult.user?.id, menuId: el });
+            await repo(UsersMeal).insert({ userId: session?.user?.id, menuId: el });
             toast.success("Добавлено в меню");
             // optimisticData = await fetchProduct;
             // await mutate(fetchProduct, {optimisticData, revalidate: true});

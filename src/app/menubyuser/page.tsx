@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import { MenuByUser } from "@/components/Menu/menu-user";
 
 

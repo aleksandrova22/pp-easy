@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
-import Admin from "@/demo/Admin";
+
 
 import { Toaster } from "react-hot-toast";
 import { Footer } from "@/components/footer";
+import { SessionProvider, SessionProviderProps } from "next-auth/react";
+import { PageProps } from "../../.next/types/app/layout";
+import { AppProps } from "next/app";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,9 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children, session
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode, session: AppProps & never;
 }>) {
   return (
     <html lang="en">
@@ -22,7 +25,9 @@ export default function RootLayout({
         <header>
           <Header> </Header>
         </header>
+        <SessionProvider session={session}>
         <main>  {children}</main>
+        </SessionProvider>
         <Footer />
         <Toaster  position="bottom-center"
   />
