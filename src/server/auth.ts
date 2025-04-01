@@ -8,7 +8,7 @@ import MailRu from "next-auth/providers/mailru";
 import Yandex from "next-auth/providers/yandex";
 import { repo, withRemult, type UserInfo } from "remult";
 import bcrypt from "bcryptjs";
-import { User } from "../demo/auth/User";
+import { User } from "../../shared/entities/User";
 import { Roles } from "../demo/auth/Roles";
 
 // Configuration for Auth.js
@@ -52,8 +52,11 @@ const authConfig: NextAuthConfig = {
     GitHub,
     Google,
     MailRu,
-    Vk,
-    Yandex,
+    Vk({clientId: process.env.AUTH_VK_ID,
+      clientSecret: process.env.AUTH_VK_SECRET
+    }),
+    Yandex({clientId: process.env.AUTH_YANDEX_ID,
+      clientSecret: process.env.AUTH_YANDEX_SECRET}),
   ],
   callbacks: {
     signIn: (arg) =>

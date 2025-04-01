@@ -1,6 +1,6 @@
 import { Entity, Field, Fields } from "remult"
 import { Relations } from "remult"
-import { User } from "@/demo/auth/User";
+import { User } from "./User";
 import { Meal } from "./Meal";
 import { UsersMeal } from "./UsersMeal";
 

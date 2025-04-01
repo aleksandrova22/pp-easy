@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/header";
+import Header from "@/components/Home/header";
 
 
 import { Toaster } from "react-hot-toast";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/Home/footer";
 import { SessionProvider, SessionProviderProps } from "next-auth/react";
 import { PageProps } from "../../.next/types/app/layout";
 import { AppProps } from "next/app";

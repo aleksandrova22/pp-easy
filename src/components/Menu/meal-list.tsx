@@ -5,7 +5,7 @@ import Image from 'next/image';
 import classes from './meal-list.module.css';
 import { Meal } from '../../../shared/entities/Meal';
 import { ErrorInfo } from '../Error';
-import { Spinner } from '../spinner';
+import { Spinner } from '../Home/spinner';
 import { MenuList } from './menu-list';
 import { Menu } from '../../../shared/entities/Menu';
 import { OneDish } from './one-dish';

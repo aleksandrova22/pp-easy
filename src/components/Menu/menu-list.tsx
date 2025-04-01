@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { repo } from 'remult';
 import classes from './menu-list.module.css';
 import { ErrorInfo } from '../Error';
-import { Spinner } from '../spinner';
+import { Spinner } from '../Home/spinner';
 import { Menu } from '../../../shared/entities/Menu';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { remult } from "remult";
@@ -17,23 +17,24 @@ export function MenuList({ mealId }: { mealId: number | null }) {
         [error, setError] = useState(null),
         [data, setData] = useState<Menu[]>([]),
         [userMeal, setUserMeal] = useState<UsersMeal[]>([]);
-        const { data: session } = useSession();
-    
+    const { data: session } = useSession();
 
-    const loadMenu = async (mealId: number) => {
-        setLoading(true);
-        try {
-            const menuData = await repo(Menu).find({ where: { mealId: mealId } });
-            setData(menuData);
-        }
-        catch (err: any) { setError(err) }
-        finally { setLoading(false); }
-    };
+
+
+    // const loadMenu = async (mealId: number) => {
+    //     setLoading(true);
+    //     try {
+    //         const menuData = await repo(Menu).find({ where: { mealId: mealId } });
+    //         setData(menuData);
+    //     }
+    //     catch (err: any) { setError(err) }
+    //     finally { setLoading(false); }
+    // };
 
     const loadUserMeals = async () => {
         if (remult.user?.id) {
             try {
-                const userMeals = await repo(UsersMeal).find({ where: { userId: remult.user?.id } });
+                const userMeals = await repo(UsersMeal).find({ where: { userId: session?.user?.id } });
                 setUserMeal(userMeals);
             } catch (err: any) { setError(err) }
         }
@@ -60,14 +61,18 @@ export function MenuList({ mealId }: { mealId: number | null }) {
 
     //добавление в свои блюда
     async function addDishUser(el: number) {
-      
+
+        if (!session?.user)  { setError(error); toast.error('Авторизируйтесь для добавления')};
+
         try {
+            if (session?.user) {
             await repo(UsersMeal).insert({ userId: session?.user?.id, menuId: el });
             toast.success("Добавлено в меню");
             // optimisticData = await fetchProduct;
             // await mutate(fetchProduct, {optimisticData, revalidate: true});
 
             loadUserMeals();
+            }
 
         } catch (error: any) {
             setError(error);

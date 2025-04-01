@@ -1,7 +1,7 @@
 import { remultNextApp } from "remult/remult-next";
 import { createPostgresDataProvider } from "remult/postgres";
 import { getUserFromRequest } from "./auth";
-import { User } from "../demo/auth/User";
+import { User } from "../../shared/entities/User";
 import { Meal } from "../../shared/entities/Meal";
 import { Menu } from "../../shared/entities/Menu";
 import { UsersMeal } from "../../shared/entities/UsersMeal";

@@ -1,7 +1,7 @@
 
 import { Menu } from "../../../shared/entities/Menu";
 import { useEffect, useState } from 'react';
-import { Spinner } from "../spinner";
+import { Spinner } from "../Home/spinner";
 import Image from "next/image";
 import { repo } from 'remult';
 import { ErrorInfo } from "../Error";

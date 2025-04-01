@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import classes from './header.module.css';
- import { Hamburger } from './Home/hamburger';
+ import { Hamburger } from './hamburger';
 
 
 const

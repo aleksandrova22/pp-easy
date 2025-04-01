@@ -1,17 +1,19 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { repo } from 'remult';
+import { remult, repo } from 'remult';
 import { ErrorInfo } from '../Error';
-import { Spinner } from '../spinner';
+import { Spinner } from '../Home/spinner';
 import { UsersMeal } from '../../../shared/entities/UsersMeal';
 import { OneDish } from './one-dish';
-import { User } from '@/demo/auth/User';
+import { User } from '../../../shared/entities/User';
 //import { api } from "@/server/api";
 import { Menu } from '../../../shared/entities/Menu';
 import classes from './menu-user.module.css';
 import toast from 'react-hot-toast';
 import { useSession } from "next-auth/react";
 import { getUserFromRequest } from '@/server/auth';
+import { $summer, increment } from '@/store/summer';
+import { useStore } from '@nanostores/react';
 
 
 
@@ -21,11 +23,8 @@ export function MenuByUser() {
         [loading, setLoading] = useState(true),
         [sumMenu, setSumMenu] = useState(0),
         [data, setData] = useState<UsersMeal[]>([]);
-        // [userSession, setUserSession] = useState<User[]>([]),
-        // user = {id: userSession, name: userSession};
     const { data: session } = useSession();
-         
-    
+
 
     useEffect(() => {
 
@@ -37,23 +36,37 @@ export function MenuByUser() {
         const fetchData = async () => {
             try {
                 const
-               //userSession = await  repo(User).find({where: {id: session.user?.id}}),
-              
                     meals = await
                         repo(UsersMeal)
                             .find(
                                 {
                                     include: { user: true },
-                                    where: { userId: session.user?.id}
+                                    where: { userId: session.user?.id }
                                 });
                 setData(meals);
-                //setSumMenu([...meals]);
-               // setUserSession(userSession);
+                await updateSumMenu(meals);
+
+                // Массив калорий блюд
+                // const energyPromises = meals.map(meal => getEnergyMenuById(meal.menuId)),
+                //     energyValues = await Promise.all(energyPromises),
+                //     totalMenuIdSum = energyValues.reduce((sum, energy) => sum + energy, 0);
+                // setSumMenu(totalMenuIdSum);
+
+
             } catch (err: any) { setError(err); }
             setLoading(false);
         };
         fetchData();
     }, [session]);
+
+    //обновление калорий
+    const updateSumMenu = async (meals: UsersMeal[]) => {
+        const energyPromises = meals.map(meal => getEnergyMenuById(meal.menuId));
+        const energyValues = await Promise.all(energyPromises);
+        const totalMenuIdSum = energyValues.reduce((sum, energy) => sum + energy, 0);
+        setSumMenu(totalMenuIdSum);
+    };
+
 
     if (error) return <ErrorInfo error={error} />
 
@@ -62,61 +75,57 @@ export function MenuByUser() {
 
         try {
             await repo(UsersMeal).delete(dish);
-
             setData((prev) => prev.filter(meal => meal.id != dish.id));
             toast.success("Удалено из вашего меню");
+            await updateSumMenu(data.filter(meal => meal.id != dish.id));
         } catch (error: any) {
             setError(error);
             toast.error("Ошибка при удалении");
         }
     }
 
-
-
-    //получаем калории блюда
-
-    async function getEnergyMenuById(id: number) {
+    //Калории одного блюда по его id
+    async function getEnergyMenuById(id: number | undefined) {
+        if (!id) return 0;
         const menus = await repo(Menu).find(
             {
-                include: {
-                    meal: true
-                }
+                where: { id: id }
             }
         );
-        const menu = menus.find(h => id === h.id);
-        console.log('menu', menu);
-        const EnergyMenuById = menu?.energy;
-        console.log('menu', EnergyMenuById);
-
-        return EnergyMenuById
+        const energyMenuById = menus.find(item => item.id == id)?.energy;
+        if (!energyMenuById) return 0;
+        //increment(mas);
+        console.log('energyMenuById', energyMenuById, typeof (energyMenuById));
+        return energyMenuById;
     };
 
 
-     if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
+    if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 
-{ (!session?.user?.id)  ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {session?.user?.name}! Ваше меню: </h2>
-            <h3>Всего ккал: {sumMenu}</h3>
+        {(!session?.user?.id) ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {session.user.name}! Ваше меню: </h2>
+            <h3>Всего калорий: {sumMenu} </h3>
+
+
+
             {
                 loading ? <Spinner /> :
 
                     <div className={classes.menuuser}>
-                        {data.map(userMeal => <div key={userMeal.id}> 
-                           
+                        {data.map(userMeal => <div key={userMeal.id}>
                             <OneDish dishId={userMeal.menuId} />
-
                             <button onClick={() => deleteDishUser(userMeal)}>❌ Удалить из моего меню</button>
                         </div>
                         )}
                     </div>
             }
 
- </div>
+        </div>
 
-}
-        
-           
-      
+        }
+
+
+
 
 
     </>
