@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@nanostores/react": "^0.8.4",
-    "@tailwindcss/postcss": "^4.0.17",
+    "@tailwindcss/postcss": "^4.1.1",
     "@uidotdev/usehooks": "^2.4.1",
     "bcryptjs": "^2.4.3",
     "nanostores": "^0.11.4",
@@ -30,7 +30,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.17",
+    "tailwindcss": "^4.1.1",
     "typescript": "^5"
   },
   "description": "Everything you need to build a great `remult` project, powered by [`create-remult`](https://github.com/remult/remult/tree/main/projects/create-remult).",

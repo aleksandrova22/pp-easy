@@ -2,22 +2,46 @@
 
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow: hidden;
     width: min-content;
+    gap: 1px;
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     & button {
 
         border: 1px solid gray;
-        border-radius: 5px;
-        font-size: small;
-        white-space: inherit;
+        border-radius: 10px;
+        align-items: center;
         color: white;
         background-color: green;
+        width: 200px;
 
 
     }
 
 }
 
+@media (min-width: 550px) {
 
+    .menuuser {
+        
+        gap: 5px;
+    }
+
+  }
+
+  @media (min-width: 800px) {
+    .menuuser {
+       
+        flex-wrap: nowrap;
+      
+        gap: 10px;
+    }
+
+  }

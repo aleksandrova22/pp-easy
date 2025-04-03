@@ -8,6 +8,8 @@ import { Footer } from "@/components/Home/footer";
 import { SessionProvider, SessionProviderProps } from "next-auth/react";
 import { PageProps } from "../../.next/types/app/layout";
 import { AppProps } from "next/app";
+import Burger from "@/components/Home/burger";
+import { Hamburger } from "@/components/Home/hamburger";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        <header>
+      
+        {/* <header> */}
+        {/* <Hamburger/> */}
           <Header> </Header>
-        </header>
+        {/* </header> */}
         <SessionProvider session={session}>
         <main>  {children}</main>
         </SessionProvider>

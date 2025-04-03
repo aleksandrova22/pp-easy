@@ -103,8 +103,8 @@ export function MenuByUser() {
     if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 
-        {(!session?.user?.id) ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {session.user.name}! Ваше меню: </h2>
-            <h3>Всего калорий: {sumMenu} </h3>
+        {(!session?.user?.id) ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {<strong>{session.user?.name}</strong>}! Вот твое меню: </h2>
+            <h3>Всего <strong>{sumMenu} </strong>калорий</h3>
 
 
 
@@ -114,7 +114,7 @@ export function MenuByUser() {
                     <div className={classes.menuuser}>
                         {data.map(userMeal => <div key={userMeal.id}>
                             <OneDish dishId={userMeal.menuId} />
-                            <button onClick={() => deleteDishUser(userMeal)}>❌ Удалить из моего меню</button>
+                            <button onClick={() => deleteDishUser(userMeal)} >❌ Удалить из моего меню</button>
                         </div>
                         )}
                     </div>
@@ -129,4 +129,4 @@ export function MenuByUser() {
 
 
     </>
-};
+}; 

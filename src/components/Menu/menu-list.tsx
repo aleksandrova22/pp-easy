@@ -32,7 +32,7 @@ export function MenuList({ mealId }: { mealId: number | null }) {
     // };
 
     const loadUserMeals = async () => {
-        if (remult.user?.id) {
+        if (session?.user?.id) {
             try {
                 const userMeals = await repo(UsersMeal).find({ where: { userId: session?.user?.id } });
                 setUserMeal(userMeals);
