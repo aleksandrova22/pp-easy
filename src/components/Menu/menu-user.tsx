@@ -12,8 +12,7 @@ import classes from './menu-user.module.css';
 import toast from 'react-hot-toast';
 import { useSession } from "next-auth/react";
 import { getUserFromRequest } from '@/server/auth';
-import { $summer, increment } from '@/store/summer';
-import { useStore } from '@nanostores/react';
+
 
 
 
@@ -41,7 +40,7 @@ export function MenuByUser() {
                             .find(
                                 {
                                     include: { user: true },
-                                    where: { userId: session.user?.id }
+                                     where: { userId: session.user?.id }
                                 });
                 setData(meals);
                 await updateSumMenu(meals);
@@ -99,7 +98,7 @@ export function MenuByUser() {
         return energyMenuById;
     };
 
-
+console.log('user', session?.user);
     if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
     return <>
 

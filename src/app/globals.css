@@ -167,7 +167,6 @@ p+p {
 }
 
 
-
 h3 {
   font-weight: 500;
   font-size: 1rem;
@@ -265,10 +264,6 @@ input[type="text"] {
   opacity: 0;
   animation: fadeIn 300ms ease-out 300ms forwards;
 }
-
-
-
-
 
 
 

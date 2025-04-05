@@ -6,29 +6,28 @@
   gap: 5px;
   top: 0px;
 
-  
 }
 
 
 
 .logo {
- 
-    margin: 5px;
-   max-width: min-content;
+  width: auto;
+  height: auto;
+  max-width: min-content;
   animation: logo-spin infinite 20s linear;
   border-radius: 50%;
   aspect-ratio: 1/1;
-  position: sticky;
-  right: 100px;
+  /* position: sticky;
+  right: 100px; */
   top: 0px;
-  display: inline;
+  /* display: contents; */
 
 
   &:hover {
     filter: drop-shadow(0 0 10em #075f22aa);
 
   }
-
+}
 
 @keyframes logo-spin {
   from {
@@ -39,22 +38,19 @@
     transform: rotate(360deg);
   }
 }
-}
+
 
 @media (min-width: 1024px) {
   .header {
     display: flex;
-  justify-content: flex-start;
-  padding: 2px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  gap: 5px;
-  top: 0px;
+    justify-content: flex-start;
+    padding: 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    gap: 5px;
+    top: 0px;
 
   }
 
-  .logo {
-    display:contents;
-  
-  }
+
 
 }

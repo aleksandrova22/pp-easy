@@ -2,10 +2,21 @@ import { Entity, Field, Fields } from "remult"
 import { Relations } from "remult"
 import { User } from "./User";
 import { Menu } from "./Menu";
+import { remult, repo} from 'remult';
+import { Roles } from "@/demo/auth/Roles";
+
 
 
 @Entity<UsersMeal>("usersMeal", {
     allowApiCrud: true,
+    
+    apiPrefilter: () => {
+        // Defines a prefilter to restrict data access based on user roles
+        if (remult.isAllowed(Roles.admin)) return {}; // Admin can see all users
+        return {
+          userId: remult.user!.id, // Non-admin users can only access their own data
+        };
+      },
 })
 export class UsersMeal {
     @Fields.autoIncrement()
@@ -23,6 +34,6 @@ export class UsersMeal {
     @Relations.toOne(() => Menu, { field: "menuId" })
     menu!: Menu
 
-
+    
 }
 

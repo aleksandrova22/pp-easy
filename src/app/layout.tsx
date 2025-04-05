@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Home/header";
-
-
 import { Toaster } from "react-hot-toast";
 import { Footer } from "@/components/Home/footer";
 import { SessionProvider, SessionProviderProps } from "next-auth/react";
 import { PageProps } from "../../.next/types/app/layout";
 import { AppProps } from "next/app";
-import Burger from "@/components/Home/burger";
 import { Hamburger } from "@/components/Home/hamburger";
 
 export const metadata: Metadata = {
@@ -23,18 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body >
-      
-        {/* <header> */}
-        {/* <Hamburger/> */}
-          <Header> </Header>
-        {/* </header> */}
+        <Header> </Header>
         <SessionProvider session={session}>
-        <main>  {children}</main>
+          <main>  {children}</main>
         </SessionProvider>
         <Footer />
-        <Toaster  position="bottom-center"
-  />
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

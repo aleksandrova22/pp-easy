@@ -83,6 +83,7 @@ const authConfig: NextAuthConfig = {
         ...session,
         user: {
           id: token.sub, // Use the token's subject (user ID)
+          name: session.user.name
         },
       };
     },

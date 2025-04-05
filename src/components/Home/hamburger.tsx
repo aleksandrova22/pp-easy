@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 
 export function Hamburger() {
-	const burgOpen = () => {
+	const burg = () => {
 
 		const burger = document.querySelectorAll('.navbar-burger');
 		const menu = document.querySelectorAll('.navbar-menu');
@@ -49,7 +49,7 @@ export function Hamburger() {
 
 	return <>
 		{/* <div className={`lg:hidden`}> */}
-		<button className={`navbar-burger flex items-center text-blue-600 p-3 lg:hidden`} onClick={burgOpen}>
+		<button className={`navbar-burger flex items-center text-blue-600 p-3 w-10 lg:hidden`} onClick={burg}>
 			☰
 		</button>
 		{/* </div> */}
@@ -57,8 +57,8 @@ export function Hamburger() {
 			<div className={`navbar-backdrop fixed inset-0 bg-gray-800 opacity-25`}></div>
 			<nav className={`fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-300 border-r overflow-y-auto`}>
 				<div className={`flex items-center mb-8`}>
-					<Image className={classes.logo} src={"/logo.png"} width={70} height={70} alt="logo" priority />
-					<button className={`navbar-close`} onClick={burgOpen}> ✖ </button>
+					{/* <Image className={classes.logo} src={"/logo.png"} width={70} height={70} alt="logo" priority /> */}
+					<button className={`navbar-close` } onClick={burg}> ✖ </button>
 				</div>
 				<div className={`flex-col `}>
 					<ul className={`flex flex-col items-center`}>
@@ -75,10 +75,10 @@ export function Hamburger() {
 							<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/menubyuser">Мое меню</a>
 						</li>
 						<li className={`mb-1`}>
-							<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/contact">Обратная связь</a>
+							<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/contact">Контакты</a>
 						</li>
 						<li className={`mb-1`}>
-							<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/authorize">Войти</a>
+							<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/authorize">Авторизация</a>
 						</li>
 
 					</ul>
