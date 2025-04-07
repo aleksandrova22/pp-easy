@@ -1,13 +1,15 @@
 .calc {
     margin: 30px;
-   
+    display: flex;
+    flex-direction: column;
     border: 3px solid #0c8343;
     text-align: center;
-    width: 800px;
+    /* width: 800px; */
+    align-items: center;
     min-height: min-content;
     background-color: #d7f7e5ee;
     color: black;
-  
+
     /* flex-wrap: wrap; */
 
     & button {
@@ -41,7 +43,10 @@
         text-align: center;
 
     }
-    & h3 {background-color: #0c8343;}
+
+    & h3 {
+        background-color: #0c8343;
+    }
 
 }
 

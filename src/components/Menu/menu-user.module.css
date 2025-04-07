@@ -7,11 +7,11 @@
     width: min-content;
     gap: 1px;
 
-    & div {
+    /* & div {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    } */
 
     & button {
 

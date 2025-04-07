@@ -45,12 +45,7 @@ export function MenuByUser() {
                 setData(meals);
                 await updateSumMenu(meals);
 
-                // Массив калорий блюд
-                // const energyPromises = meals.map(meal => getEnergyMenuById(meal.menuId)),
-                //     energyValues = await Promise.all(energyPromises),
-                //     totalMenuIdSum = energyValues.reduce((sum, energy) => sum + energy, 0);
-                // setSumMenu(totalMenuIdSum);
-
+               
 
             } catch (err: any) { setError(err); }
             setLoading(false);
@@ -113,7 +108,8 @@ console.log('user', session?.user);
                     <div className={classes.menuuser}>
                         {data.map(userMeal => <div key={userMeal.id}>
                             <OneDish dishId={userMeal.menuId} />
-                            <button onClick={() => deleteDishUser(userMeal)} >❌ Удалить из моего меню</button>
+                            <button type="button" onClick={() => deleteDishUser(userMeal)} className={`text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>❌ Удалить из моего меню</button>
+                           
                         </div>
                         )}
                     </div>

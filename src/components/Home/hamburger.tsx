@@ -49,7 +49,7 @@ export function Hamburger() {
 
 	return <>
 		{/* <div className={`lg:hidden`}> */}
-		<button className={`navbar-burger flex items-center text-blue-600 p-3 w-10 lg:hidden`} onClick={burg}>
+		<button className={`navbar-burger flex items-center text-gray-800 lg:hidden `} onClick={burg}>
 			☰
 		</button>
 		{/* </div> */}

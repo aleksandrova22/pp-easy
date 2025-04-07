@@ -4,11 +4,15 @@ import Image from "next/image";
 export default function PageContact() {
 
   return <>
-    <h1>Обратная связь</h1>
-    <hr />
-    <Image src={"/tg.png"} width={30} height={30} alt="tg" />
+    <h2>Контакты</h2>
 
-    <a href="https://t.me/elena_lyamurka" > Telegram    </a>
+       <div className={`flex flex-nowrap`}>
+    <Image src={"/tg.png"} width={30} height={30} alt="tg" />
+      <a className={`text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="https://t.me/elena_lyamurka">  Telegram</a>                                     
+     
+      </div> 
+           
+   
 
   </>
 }

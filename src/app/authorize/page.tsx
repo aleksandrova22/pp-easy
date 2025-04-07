@@ -8,11 +8,11 @@ import Auth from "@/demo/auth/Auth";
 export default function PageAuth() {
 
   return <>
-    <h1>Авторизация</h1>
+    <h2>Авторизация</h2>
 
     <div className="tiles">
-       <Auth /> 
-       <Admin /> 
-       </div>
+      <Auth />
+      <Admin />
+    </div>
   </>
 }

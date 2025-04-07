@@ -20,17 +20,6 @@ export function MenuList({ mealId }: { mealId: number | null }) {
     const { data: session } = useSession();
 
 
-
-    // const loadMenu = async (mealId: number) => {
-    //     setLoading(true);
-    //     try {
-    //         const menuData = await repo(Menu).find({ where: { mealId: mealId } });
-    //         setData(menuData);
-    //     }
-    //     catch (err: any) { setError(err) }
-    //     finally { setLoading(false); }
-    // };
-
     const loadUserMeals = async () => {
         if (session?.user?.id) {
             try {
@@ -62,12 +51,12 @@ export function MenuList({ mealId }: { mealId: number | null }) {
     //добавление в свои блюда
     async function addDishUser(el: number) {
 
-        if (!session?.user)  { setError(error); toast.error('Авторизируйтесь для добавления')};
+        if (!session?.user)  { setError(error); toast.error('Авторизируйтесь для добавления блюд в свое меню') };
 
         try {
             if (session?.user) {
             await repo(UsersMeal).insert({ userId: session?.user?.id, menuId: el });
-            toast.success("Добавлено в меню");
+            toast.success("Добавлено в ваше меню");
             // optimisticData = await fetchProduct;
             // await mutate(fetchProduct, {optimisticData, revalidate: true});
 
@@ -85,7 +74,8 @@ export function MenuList({ mealId }: { mealId: number | null }) {
         {loading ? <Spinner /> :
             data?.map(el => <div key={el.id}>
                 <OneDish dishId={el.id} />
-                <button onClick={() => addDishUser(el.id)}>Добавить в мое меню</button>
+                <button type="button" onClick={() => addDishUser(el.id)} className={`text-gray-900 bg-gradient-to-r from-green-600 via-green-400 to-lime-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>Добавить в мое меню</button>
+               
             </div>
             )
         }
