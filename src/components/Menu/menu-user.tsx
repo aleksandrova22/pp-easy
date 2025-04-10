@@ -94,7 +94,7 @@ export function MenuByUser() {
     };
 
 console.log('user', session?.user);
-    if (!session?.user?.id) return <h2>Авторизируйтесь!</h2>
+    if (!session?.user?.id) return <h2>  <a href='/authorize'>Авторизируйтесь для добавления блюд в свое меню </a> </h2>
     return <>
 
         {(!session?.user?.id) ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {<strong>{session.user?.name}</strong>}! Вот твое меню: </h2>
@@ -105,8 +105,8 @@ console.log('user', session?.user);
             {
                 loading ? <Spinner /> :
 
-                    <div className={classes.menuuser}>
-                        {data.map(userMeal => <div key={userMeal.id}>
+                    <div className={classes.menu_user_list}>
+                        {data.map(userMeal => <div className={classes.menu_user} key={userMeal.id}>
                             <OneDish dishId={userMeal.menuId} />
                             <button type="button" onClick={() => deleteDishUser(userMeal)} className={`text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>❌ Удалить из моего меню</button>
                            

@@ -70,9 +70,9 @@ export function MenuList({ mealId }: { mealId: number | null }) {
 
     }
 
-    return <div className={classes.menu}>
+    return <div className={classes.menu_list}>
         {loading ? <Spinner /> :
-            data?.map(el => <div key={el.id}>
+            data?.map(el => <div className={classes.menu} key={el.id}>
                 <OneDish dishId={el.id} />
                 <button type="button" onClick={() => addDishUser(el.id)} className={`text-gray-900 bg-gradient-to-r from-green-600 via-green-400 to-lime-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>Добавить в мое меню</button>
                

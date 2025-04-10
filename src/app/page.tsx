@@ -10,11 +10,12 @@ export default function Home() {
       Выбирайте рецепты, добавляйте в свое меню.<br />
       Готовьте вкусно и полезно!</p>
 
-      {/* <div className={`grid-element aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-contain bg-no-repeat items-center justify-items-center sepia-50 w-full`}> */}
-    <div id="default-carousel" className="relative w-full" data-carousel="slide">
+
+
+    {/* <div id="default-carousel" className="relative w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-       
+
           <img src="/breakfast.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
         </div>
 
@@ -32,7 +33,7 @@ export default function Home() {
         <button type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
         <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
         <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-       
+
       </div>
 
       <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -51,29 +52,29 @@ export default function Home() {
           <span className="sr-only">Next</span>
         </span>
       </button>
-    </div>
+    </div> */}
+
+
+
+<img src="/breakfast.jpg" alt="gg"/>
+
+
+    <button className={`text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
+      <a href='/calc'> Калькулятор калорий</a> </button>
+
+
+    <br />
+    <br />
+
+    <button type="button" className={`text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
+      <a href='/menus'>Полезные рецепты</a>
+    </button>
 
 
 
 
     
-
-            <button className={`text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
-        <a href='/calc'> Калькулятор калорий</a> </button>
-
-
-      <br />
-      <br />
-
-      <button type="button" className={`text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
-        <a href='/menus'>Полезные рецепты</a>
-      </button>
-
-
-
-
-      {/* <Image  src="/breakfast.jpg" fill={true}  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/> */}
-    {/* </div> */}
+   
 
 
 
