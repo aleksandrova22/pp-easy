@@ -1,62 +1,83 @@
 .dish {
     box-sizing: border-box;
-    max-width: min-content;
+    /* width: min-content; */
     /* background-color: #dcdcdc; */
     overflow-y: auto;
     padding: 0.2em;
-  
+
     display: flex;
     color: black;
-   flex-direction: column;
+    flex-direction: column;
+
 
 }
 
-    .one_dish {
-        /* display: flex;
-        flex-direction: column; */
-        /* background-color: #dcdcdc; */
-        /* border-radius: 1em; */
-        /* margin: 0.5em; */
-      
-        /* border: 1px solid green; */
-        min-width: min-content;
+.one_dish {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #dcdcdc; */
+    /* border-radius: 1em; */
+    /* margin: 0.5em; */
 
-       
-        & span {
-            color: rgb(2, 49, 2);
-            font-weight:lighter;
-            font-family: 'Courier New', Courier, monospace;
-        }
+    /* border: 1px solid green; */
+    min-width: min-content;
 
-        & button {
+    & #default_modal {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 
-            border: 1px solid gray;
-            border-radius: 5px;
-            font-size: small;
-            font-weight: bold;
-            color: white;
-            background-color: green;
+    /* 
+    & div.modal {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        z-index: 50;
+        width: 80%;
+    }
+     */
 
-        }
 
-        & img {
-            aspect-ratio: 1/1;
-            /* border-radius: 50%; */
-            cursor: pointer;
-        }
+
+
+    & span {
+        color: rgb(2, 49, 2);
+        font-weight: lighter;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    & button {
+
+        border: 1px solid gray;
+        border-radius: 5px;
+        font-size: small;
+        font-weight: bold;
+        color: white;
+        /* background-color: green; */
+        transition: all 0.6s;
 
     }
 
-
-   
-
-
-    & fieldset {
-
-        display: flexbox;
-
-
-        & fieldset:hover {
-            cursor: pointer;
-        }
+    & img {
+        aspect-ratio: 1/1;
+        /* border-radius: 50%; */
+        cursor: pointer;
     }
+
+}
+
+
+
+
+
+& fieldset {
+
+    display: flexbox;
+
+
+    & fieldset:hover {
+        cursor: pointer;
+    }
+}

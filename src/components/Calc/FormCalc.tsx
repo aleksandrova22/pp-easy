@@ -13,13 +13,14 @@ type DataFormProps = {
 function DataForm({ columns, values, setValues }: DataFormProps) {
     return <div >
         {columns.map(({ setVal, title }, i: number) =>
-            <div key={i}>    {title} <br />
+            <div key={i}>    {title}  <br />
                 {setVal
                     ?
                     <input type='number' min={0} max={500} value={values[i]}
-                        onInput={(event) => setValues((prev:string[]) => prev.with(i, (event.target as HTMLInputElement).value ))} />
-                    : ''}
-            </div>)}  <br />
+                        onInput={(event) => setValues((prev:string[]) => prev.with(i, (event.target as HTMLInputElement).value ))} /> 
+                    : ''
+                    } <br/>
+            </div>)}  
     </div>;
 }
 
@@ -68,7 +69,7 @@ export function FormCalc() {
             </form>
             <br />
             <p>Ваша цель:</p>
-            <div>
+            <div className={classes.form_target}>
                 <button style={{ backgroundColor: valueTarget === '-1' || '' ? 'green' : '' }}
                     onClick={() => { setValueTarget('-1') }}>Сбросить вес </button>
                 <button style={{ backgroundColor: valueTarget === '0' || '' ? 'green' : '' }}

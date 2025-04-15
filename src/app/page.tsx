@@ -1,4 +1,5 @@
 
+import { Carousel } from "@/components/Home/carousel";
 import Image from "next/image";
 
 
@@ -10,6 +11,7 @@ export default function Home() {
       Выбирайте рецепты, добавляйте в свое меню.<br />
       Готовьте вкусно и полезно!</p>
 
+    <Carousel />
 
 
     {/* <div id="default-carousel" className="relative w-full" data-carousel="slide">
@@ -56,10 +58,10 @@ export default function Home() {
 
 
 
-<img src="/breakfast.jpg" alt="gg"/>
+    {/* <img src="/breakfast.jpg" alt="gg" /> */}
 
-
-    <button className={`text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
+{/* 
+    <button className={`absolute text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
       <a href='/calc'> Калькулятор калорий</a> </button>
 
 
@@ -68,13 +70,13 @@ export default function Home() {
 
     <button type="button" className={`text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
       <a href='/menus'>Полезные рецепты</a>
-    </button>
+    </button> */}
 
 
 
 
-    
-   
+
+
 
 
 
