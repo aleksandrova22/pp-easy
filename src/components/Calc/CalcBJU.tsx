@@ -1,17 +1,20 @@
 "use client";
-import { memo, ReactNode } from 'react';
-
+import { memo, ReactNode, useState } from 'react';
+import classes from './FormCalc.module.css';
 type ListProps = {
-
-    valueGender: string,
-    valueLifeStyle: string,
-    valueTarget: string,
-    addFormValues: string[],
+    children: {
+        valueGender: string,
+        valueLifeStyle: string,
+        valueTarget: string,
+        addFormValues: string[]
+    },
+    onClose: () => void,
 
     // children: ReactNode
 };
 
-export const CalcBJU = memo(function ({ children }: { children: ListProps }) {
+
+export function CalcBJU({ onClose, children }: ListProps) {
     const
         { valueGender, valueLifeStyle, valueTarget, addFormValues } = children,
         [Age, Height, Weight] = addFormValues;
@@ -24,21 +27,39 @@ export const CalcBJU = memo(function ({ children }: { children: ListProps }) {
     if (valueGender === 'M') BJU = Math.round((+bovValue + 5) * kk(valueLifeStyle))
     if (valueGender === 'W') BJU = Math.round((+bovValue - 161) * kk(valueLifeStyle));
     const recomend: { b: number, j: number, u: number, BJU: number } | undefined = variation(+Weight, BJU, valueTarget);
+
+
+    const onWrapClick = (event: any) => { if (event.target.classList.contains('modal-wrap')) onClose() };
+
     return <>
-        <div  >
-            <h3> Рекомендуемая суточная норма калорий:</h3>
-            <div>{BJU} Ккал</div>
-            <h3> Ориентир для сброса / набора веса:</h3>
-            <p>Калории:{recomend?.BJU} </p>
-            <p>Суточная норма белка: {recomend?.b} грамм</p>
-            <p>Суточная норма жиров: {recomend?.j} грамм</p>
-            <p>Суточная норма углеводов: {recomend?.u} грамм</p>
+
+        <div className={classes.modal}>
+            <div className={classes.modal_wrap} onClick={onWrapClick}>
+                {/* кнопка закрыть мод окно */}
+
+                <div className={classes.modal_content} >
+
+                    <h3> Рекомендуемая суточная норма калорий:</h3>
+                    <div>{BJU} Ккал</div>
+                    <h3> Ориентир для сброса / набора веса:</h3>
+                    <p>Калории:{recomend?.BJU} </p>
+                    <p>Суточная норма белка: {recomend?.b} грамм</p>
+                    <p>Суточная норма жиров: {recomend?.j} грамм</p>
+                    <p>Суточная норма углеводов: {recomend?.u} грамм</p>
+
+                    <div className={classes.btn_modal} onClick={() => onClose()}> ✖ </div>
+
+                </div>
+            </div>
         </div>
-    </>;
-});
+    </>
+}
+
 
 //всякие вычислительные функции
 // расчет кооэффициента
+
+
 function kk(LifeStyle: string) {
     let k = 1;
     if (LifeStyle === "lifeSmall" || "") { k = 1.2 }
@@ -56,7 +77,7 @@ function bov(Age: number, Height: number, Weight: number) {
     return bov;
 }
 
-
+//вычисление рекомендаций по бжу
 function variation(Weight: number, BJU: number, Target: string) {
     switch (Target) {
         case ("-1"): {
@@ -67,7 +88,7 @@ function variation(Weight: number, BJU: number, Target: string) {
                 BJURec = { b: b, j: j, u: u, BJU: shift };
             return BJURec;
         };
-        case ("0") : {
+        case ("0"): {
             const
                 b = Math.round(2 * Weight),
                 j = Math.round(1 * Weight),
@@ -85,7 +106,7 @@ function variation(Weight: number, BJU: number, Target: string) {
         };
 
     };
-    
+
 }
 
 

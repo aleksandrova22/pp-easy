@@ -5,14 +5,15 @@ import Image from "next/image";
 
 export default function Home() {
   return <>
-    <h2>Легкий старт к здоровью и стройности</h2>
-    <p className={`my-4 text-s text-center text-gray-600`}>
-      Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
-      Выбирайте рецепты, добавляйте в свое меню.<br />
-      Готовьте вкусно и полезно!</p>
+    <div>
+      <h2>Легкий старт к здоровью и стройности</h2>
+      <p className={`my-4 text-s text-center text-gray-600`}>
+        Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
+        Выбирайте рецепты, добавляйте в свое меню.<br />
+        Готовьте вкусно и полезно!</p>
 
-    <Carousel />
-
+      <Carousel />
+    </div>
 
     {/* <div id="default-carousel" className="relative w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -60,7 +61,7 @@ export default function Home() {
 
     {/* <img src="/breakfast.jpg" alt="gg" /> */}
 
-{/* 
+    {/* 
     <button className={`absolute text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
       <a href='/calc'> Калькулятор калорий</a> </button>
 

@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import classes from './FormCalc.module.css';
 import { Column, config } from './const';
-import {CalcBJU} from './CalcBJU';
+import { CalcBJU } from './CalcBJU';
 
 type DataFormProps = {
     columns: Column[],
     values: string[],
-    setValues: (values: any )=> void
+    setValues: (values: any) => void
 }
 
 function DataForm({ columns, values, setValues }: DataFormProps) {
@@ -17,10 +17,10 @@ function DataForm({ columns, values, setValues }: DataFormProps) {
                 {setVal
                     ?
                     <input type='number' min={0} max={500} value={values[i]}
-                        onInput={(event) => setValues((prev:string[]) => prev.with(i, (event.target as HTMLInputElement).value ))} /> 
+                        onInput={(event) => setValues((prev: string[]) => prev.with(i, (event.target as HTMLInputElement).value))} />
                     : ''
-                    } <br/>
-            </div>)}  
+                } <br />
+            </div>)}
     </div>;
 }
 
@@ -42,23 +42,25 @@ export function FormCalc() {
             <p>Данные элементы являются жизненно важными для человеческого организма.</p>
             <p>Соблюдать КБЖУ-БАЛАНС - это обязательное условие для успешного избавления от лишних килограммов</p>
             <p>Калькулятор КБЖУ поможет рассчитать калории и нормы нутриентов по формуле Миффлина-Сан Жеора в зависимости от целей. </p>
-            
+
             <br />
 
             <h3>КАЛЬКУЛЯТОР КБЖУ</h3>
             <div>
-                <p>Ваш пол:</p>
-                <button style={{ backgroundColor: valueGender === 'M' || '' ? 'green' : '' }}
+                <span>Ваш пол:</span><br/>
+                <div className={classes.form_target}>
+                <button style={{ backgroundColor: valueGender === 'M' || '' ? 'green' : '' } }
                     onClick={() => { setValueGender('M') }}>Мужской </button>
                 <button style={{ backgroundColor: valueGender === 'W' || '' ? 'green' : '' }}
                     onClick={() => { setValueGender('W') }}> Женский </button>
             </div>
+            </div>
             <br />
             <DataForm columns={config.columns} values={addFormValues} setValues={setAddFormValues} />
             <br />
-            <form  >
-                Ваш образ жизни:
-                <br />
+            <div >
+            <form>
+                <span>Ваш образ жизни:</span><br/>
                 <select value={valueLifeStyle} onChange={event => setValueLifeStyle(event.target.value)}>
                     <option value="">Не указано</option>
                     <option value="lifeSmall">Малоподвижный</option>
@@ -67,17 +69,25 @@ export function FormCalc() {
                     <option value="LifeExtrim">Высокие нагрузки каждый день</option>
                 </select>
             </form>
-            <br />
-            <p>Ваша цель:</p>
-            <div className={classes.form_target}>
-                <button style={{ backgroundColor: valueTarget === '-1' || '' ? 'green' : '' }}
-                    onClick={() => { setValueTarget('-1') }}>Сбросить вес </button>
-                <button style={{ backgroundColor: valueTarget === '0' || '' ? 'green' : '' }}
-                    onClick={() => { setValueTarget('0') }}>Поддерживать вес </button>
-                <button style={{ backgroundColor: valueTarget === '+1' || '' ? 'green' : '' }}
-                    onClick={() => { setValueTarget('+1') }}>Набрать мышечную массу </button>
             </div>
             <br />
+
+
+            <div >
+                <span>Ваша цель:</span> <br />
+                <div className={classes.form_target}>
+                    <button style={{ backgroundColor: valueTarget === '-1' || '' ? 'green' : '' }}
+                        onClick={() => { setValueTarget('-1') }}>Сбросить вес </button>
+                    <button style={{ backgroundColor: valueTarget === '0' || '' ? 'green' : '' }}
+                        onClick={() => { setValueTarget('0') }}>Поддерживать вес </button>
+                    <button style={{ backgroundColor: valueTarget === '+1' || '' ? 'green' : '' }}
+                        onClick={() => { setValueTarget('+1') }}>Набрать мышечную массу </button>
+                </div>
+
+            </div>
+            <br />
+
+
             <button style={{ backgroundColor: show ? 'green' : '' }}
                 onClick={() => {
                     // if (!valueGender) return <span></span>
@@ -86,11 +96,9 @@ export function FormCalc() {
                 }}>
                 Рассчитать </button>
             <div >
-                {show && <CalcBJU children={{ valueGender, valueLifeStyle, valueTarget, addFormValues }} />}
+                {show && <CalcBJU children={{ valueGender, valueLifeStyle, valueTarget, addFormValues}} onClose={() => setShow(false)}  />}
             </div>
 
         </div>
     </>
 };
-
-

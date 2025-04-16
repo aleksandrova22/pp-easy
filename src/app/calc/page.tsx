@@ -1,5 +1,3 @@
-"use client"
-
 import { FormCalc } from "@/components/Calc/FormCalc"
 
 

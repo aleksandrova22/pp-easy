@@ -5,9 +5,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   gap: 5px;
   top: 0px;
-
-}
-
+ }
 
 
 .logo {
@@ -20,14 +18,9 @@
   /* position: sticky;
   right: 100px; */
   top: 0px;
-  /* display: contents; */
-
-
-  &:hover {
-    filter: drop-shadow(0 0 10em #075f22aa);
-
-  }
 }
+
+
 
 @keyframes logo-spin {
   from {
@@ -80,4 +73,40 @@
     }
 
   } */
+}
+
+/* логотип тарелка  */
+.dish_logo {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transition: 1s;
+  & :hover {cursor: pointer; transform: scale(1.2); }
+}
+
+
+.dish_logo_img {
+  animation-name: blink;
+  animation-timing-function: linear;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+
+
+@keyframes blink {
+ 0% {
+  opacity: 1;
+    visibility: visible;
+  }
+
+  50% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
