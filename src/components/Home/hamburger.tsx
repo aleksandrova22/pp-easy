@@ -1,6 +1,9 @@
 
 import classes from './header.module.css';
 import { useEffect, useState } from 'react';
+import { useSession , SessionProvider} from "next-auth/react";
+import Image from 'next/image';
+
 
 export function Hamburger() {
 
@@ -8,7 +11,7 @@ export function Hamburger() {
 		[isMenuOpen, setIsMenuOpen] = useState(false),
 		toggleMenu = () => { setIsMenuOpen(!isMenuOpen) };
 
-
+	// const { data: session } = useSession();
 
 
 	// const burg = () => {
@@ -59,10 +62,11 @@ export function Hamburger() {
 
 
 			<button className={`navbar-burger flex items-center text-gray-800 lg:hidden `} onClick={toggleMenu}>
-				☰
+				{/* ☰ */}
+				🍔
 			</button>
 
- {/* <div className={`navbar-burger flex items-center text-gray-800 lg:hidden`} onClick={toggleMenu}>
+			{/* <div className={`navbar-burger flex items-center text-gray-800 lg:hidden`} onClick={toggleMenu}>
  ☰
             <span className={classes.span_burger} ></span>
             <span className={classes.span_burger} ></span>
@@ -82,32 +86,40 @@ export function Hamburger() {
 					<div className={`flex-col `}>
 						<ul className={`flex flex-col items-center`}>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/">Главная</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/">Главная</a>
 							</li>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/calc">Калькулятор БЖУ</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/calc">Калькулятор КБЖУ</a>
 							</li>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/menus">Рецепты</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/menus">Рецепты</a>
 							</li>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/menubyuser">Мое меню</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/menubyuser">Мое меню</a>
 							</li>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/contact">Контакты</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/contact">Контакты</a>
 							</li>
 							<li className={`mb-1`}>
-								<a className={`block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/authorize">Авторизация</a>
+								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/authorize">Авторизация</a>
 							</li>
+							{/* <li><a className={`block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl`} href="/api/auth/signin">Войти</a></li> */}
 
 						</ul>
 						{/* </div> */}
 						{/* <div className={`mt-auto`}> */}
-						{/* <div className={`pt-6`}>
-						<a className={`block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl`} href="#">Sign in</a>
-						<a className={`block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl`} href="#">Sign Up</a>
-					</div> */}
-						<p className={`my-4 text-s text-center text-gray-600`}> <span>© 2025</span></p>
+						{/* <div className={`pt-6`}> */}
+
+							{/* {(session) ?  */}
+							
+							{/* <a className={`block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl`} href="/authorize">Выйти</a> :
+								<a className={`block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl`} href="/api/auth/signin">Войти</a>
+							 */}
+							{/* </div> */}
+
+
+						{/* </div> */}
+						{/* <p className={`my-4 text-s text-center text-gray-600`}> <span>© 2025</span></p> */}
 					</div>
 				</nav>
 			</div>
