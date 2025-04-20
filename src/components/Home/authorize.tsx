@@ -12,13 +12,13 @@ export default function Authorize() {
   return <>
     <h2>Авторизация</h2>
 
-   {console.log('session?.user?.role', session?.user)}
+   {console.log('session', session)}
 
     <div className="tiles">
       <Auth />
 
 
-{(session?.user?.role)  ? <div><Admin /></div > : '' }
+{(session?.user?.admin)  ? <div><Admin /></div > : '' }
 
       {/* <Admin /> */}
     </div>

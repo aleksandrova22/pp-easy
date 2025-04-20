@@ -6,15 +6,15 @@ import Image from "next/image";
 export default function Home() {
   return <>
     <h2>Легкий старт к здоровью и стройности</h2>
-    <div className={`w-full`}>
+    {/* <div className={`w-full`}>
 
       <p className={`my-4 text-s text-center text-gray-700`}>
         Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
         Выбирайте рецепты, добавляйте в свое меню.<br />
-        Готовьте вкусно и полезно!</p>
+        Готовьте вкусно и полезно!</p> */}
 
       <Carousel />
-    </div>
+    {/* </div> */}
 
     {/* <div id="default-carousel" className="relative w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">

@@ -2,5 +2,6 @@
     "cSpell.words": [
         "nanostores",
         "remult"
-    ]
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

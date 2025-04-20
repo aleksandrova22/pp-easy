@@ -36,7 +36,7 @@ const authConfig: NextAuthConfig = {
             name: credentials.name as string,
             providerType: "credentials",
           });
-
+          //console.log('ggggggggggg  user', user)
           // If a matching user is found and the password is valid
           if (
             user &&
@@ -44,6 +44,8 @@ const authConfig: NextAuthConfig = {
           ) {
             return {
               id: user.id, // Return the user's ID as part of the session
+              admin: user.admin
+              // name1: "fff"
             };
           }
           return null; // If credentials are invalid, return null
@@ -52,13 +54,31 @@ const authConfig: NextAuthConfig = {
     GitHub,
     Google,
     MailRu,
-    Vk({clientId: process.env.AUTH_VK_ID,
+    Vk({
+      clientId: process.env.AUTH_VK_ID,
       clientSecret: process.env.AUTH_VK_SECRET
     }),
-    Yandex({clientId: process.env.AUTH_YANDEX_ID,
-      clientSecret: process.env.AUTH_YANDEX_SECRET}),
+    Yandex({
+      clientId: process.env.AUTH_YANDEX_ID,
+      clientSecret: process.env.AUTH_YANDEX_SECRET
+    }),
   ],
   callbacks: {
+
+    jwt({ token, user }) {
+      if (user) token.role = user.role;
+      if (user)
+        //console.log('____jwt', { token, user });
+        if (user) {
+          // token.id = user?.id;
+          // token.role = user?.role;
+          token.admin = user?.admin;
+        }
+      return token
+    },
+
+
+
     signIn: (arg) =>
       withRemult(async () => {
         // This callback runs after sign-in
@@ -75,15 +95,26 @@ const authConfig: NextAuthConfig = {
           },
         });
         arg.user!.id = user.id; // Set the user's ID in the session
+        arg.user.admin = user?.admin;
         return true;
       }),
     session: ({ session, token }) => {
       // Add the user's ID to the session object
+      // if (session?.user) {
+      //   //session?.user?.id = token?.id;
+      //  session.user.role = token?.role;
+      // console.log('____session', { session, token });
+      // }
+
       return {
         ...session,
         user: {
           id: token.sub, // Use the token's subject (user ID)
-          name: session.user.name
+          name: session.user.name,
+          admin: !!token?.admin,
+
+          // role: session.user.role
+
         },
       };
     },

@@ -152,7 +152,7 @@ header, footer {
 }
 
 main {
-  @apply justify-items-center p-4 m-0;
+  @apply justify-items-center ;
 }
 
 :link {

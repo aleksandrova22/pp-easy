@@ -4,7 +4,19 @@
 export function Carousel() {
     return <>
 
-        <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
+<div className={`w-full`}>
+
+<p className={`my-4 text-s text-center text-gray-700`}>
+  Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
+  Выбирайте рецепты, добавляйте в свое меню.<br />
+  Готовьте вкусно и полезно!</p>
+
+
+
+
+
+
+        <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
             {/* <p className={`my-4 text-s text-center text-amber-50`}>
                 Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
                 Выбирайте рецепты, добавляйте в свое меню.<br />
@@ -24,7 +36,7 @@ export function Carousel() {
 
 
         </div>
-
+        </div>
 
         {/* <div data-hs-carousel='{
     "loadingClasses": "opacity-0",
