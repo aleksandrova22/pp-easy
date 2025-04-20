@@ -98,7 +98,7 @@ console.log('user', session?.user);
     return <>
 
         {(!session?.user?.id) ? <h2>Пожалуйста, авторизируйтесь!</h2> : <div>   <h2>Привет, {<strong>{session.user?.name}</strong>}! Вот твое меню: </h2>
-            <h3>Всего <strong>{sumMenu} </strong>калорий</h3>
+            <h2>Всего <strong>{sumMenu} </strong>калорий</h2>
 
 
 

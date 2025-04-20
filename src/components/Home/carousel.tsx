@@ -4,24 +4,29 @@
 export function Carousel() {
     return <>
 
-<div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
-
-<button className={`absolute top-20 left-10 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
-      <a href='/calc'> Калькулятор калорий</a> </button>
-
-
-    <br />
-    <br />
-
-    <button type="button" className={`absolute top-40 left-10 text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
-      <a href='/menus'>Полезные рецепты</a>
-    </button>
+        <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
+            {/* <p className={`my-4 text-s text-center text-amber-50`}>
+                Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
+                Выбирайте рецепты, добавляйте в свое меню.<br />
+                Готовьте вкусно и полезно!</p>
+            <br />
+            <br /> */}
+            <button className={`absolute top-20 left-10 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2`}>
+                <a href='/calc'> Калькулятор калорий</a> </button>
 
 
-</div>
-    
-    
-    {/* <div data-hs-carousel='{
+            <br />
+            <br />
+
+            <button type="button" className={`absolute top-40 left-10 text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
+                <a href='/menus'>Полезные рецепты</a>
+            </button>
+
+
+        </div>
+
+
+        {/* <div data-hs-carousel='{
     "loadingClasses": "opacity-0",
     "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer",
     "isAutoPlay": true

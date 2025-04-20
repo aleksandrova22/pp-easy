@@ -12,10 +12,14 @@ export default function Authorize() {
   return <>
     <h2>Авторизация</h2>
 
-   {/* { (session?.user) ? <h2>Вы вошли как {<strong>{session.user?.name}</strong>}</h2> :  */}
+   {console.log('session?.user?.role', session?.user)}
 
     <div className="tiles">
       <Auth />
+
+
+{(session?.user?.role)  ? <div><Admin /></div > : '' }
+
       {/* <Admin /> */}
     </div>
 

@@ -63,15 +63,17 @@ h1 {
   padding: 5px;
   font-size: 3.2em;
   line-height: 1.1;
+  text-align: center;
 }
 
 h2 {
-  color: #4e6813;
+  color: #17420a;
   margin: 5px;
   padding: 5px;
   font-weight: 500;
   font-size: 1.4em;
   line-height: 1.1;
+  text-align: center;
 }
 
 header {
@@ -141,9 +143,9 @@ footer {
   @apply bg-green-500 dark:bg-green-700 text-white
 }
 
-select {
+/* select {
   @apply bg-green-400 dark:bg-green-950 text-gray-300
-}
+} */
 
 header, footer {
   @apply flex flex-wrap justify-between;
@@ -203,12 +205,13 @@ input[type="text"] {
   border: 1px;
   padding: 0.4em 1em;
   /* font-size: 0.8rem; */
-  font-weight: 500;
+  /* font-weight: 500; */
   font-family: inherit;
   background-color: var(--color-darker);
   color: var(--color-light);
   cursor: pointer;
   transition: all 150ms;
+ 
 }
 
 /* button:disabled, */

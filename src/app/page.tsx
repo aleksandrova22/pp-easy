@@ -5,9 +5,10 @@ import Image from "next/image";
 
 export default function Home() {
   return <>
-    <div>
-      <h2>Легкий старт к здоровью и стройности</h2>
-      <p className={`my-4 text-s text-center text-gray-600`}>
+    <h2>Легкий старт к здоровью и стройности</h2>
+    <div className={`w-full`}>
+
+      <p className={`my-4 text-s text-center text-gray-700`}>
         Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
         Выбирайте рецепты, добавляйте в свое меню.<br />
         Готовьте вкусно и полезно!</p>
@@ -56,7 +57,6 @@ export default function Home() {
         </span>
       </button>
     </div> */}
-
 
 
     {/* <img src="/breakfast.jpg" alt="gg" /> */}
