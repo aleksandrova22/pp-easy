@@ -8,7 +8,7 @@ export default function PageContact() {
 
        <div className={`flex flex-nowrap`}>
     <Image src={"/tg.png"} width={30} height={30} alt="tg" />
-      <a className={`text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="https://t.me/elena_lyamurka">  Telegram</a>                                     
+      <a className={`text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="https://t.me/lyamurka22">  Telegram</a>                                     
      
       </div> 
            

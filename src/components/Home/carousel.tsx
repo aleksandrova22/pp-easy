@@ -1,6 +1,3 @@
-
-"use client";
-
 export function Carousel() {
     return <>
 
@@ -10,10 +7,6 @@ export function Carousel() {
   Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
   Выбирайте рецепты, добавляйте в свое меню.<br />
   Готовьте вкусно и полезно!</p>
-
-
-
-
 
 
         <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >

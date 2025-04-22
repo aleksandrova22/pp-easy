@@ -40,8 +40,8 @@ export function OneDish({ dishId }: { dishId: number }) {
             <div className={classes.dish}>
                 {data.map(dish =>
                     <div className={classes.one_dish} key={dish.id}>
-                        <span className={classes.one_dish}>Калорийность: {dish.energy} Ккал </span>
-                        <span className={classes.span}>Название: {dish.name}</span>
+                        <div className={classes.one_dish}>Калорийность: {dish.energy} Ккал </div>
+                        <div className={classes.span}>Название: {dish.name}</div>
 
                         <Image src={"/" + dish?.photo} width={100} height={100} alt="Image" onClick={() => setIsVisibleIModal(true)} />
 

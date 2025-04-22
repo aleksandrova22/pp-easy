@@ -21,6 +21,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+   
+    
     /* background-color: #dcdcdc; */
     /* border-radius: 1em; */
     /* margin: 0.5em; */
@@ -45,13 +47,17 @@
      */
 
 
-
-
-    & span {
+    & div {
         color: rgb(2, 49, 2);
-        /* font-weight: lighter;
-        font-family: 'Courier New', Courier, monospace; */
-        text-align: center; font-size: medium;
+      display: flex;
+        text-align: center; 
+        font-size: small;
+        flex-wrap: wrap;
+        /* align-items: flex-start; */
+        flex-direction: column;
+        /* white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
     }
 
     & button {
