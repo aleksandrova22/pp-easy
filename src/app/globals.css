@@ -173,9 +173,9 @@ p {
   color: var(--color-light);
 } */
 
-p+p {
+/* p+p {
   margin-top: 12px;
-}
+} */
 
 
 h3 {
@@ -209,10 +209,10 @@ input[type="text"] {
   /* font-size: 0.8rem; */
   /* font-weight: 500; */
   font-family: inherit;
-  background-color: var(--color-darker);
+  /* background-color: var(--color-darker); */
   color: var(--color-light);
   cursor: pointer;
-  transition: all 150ms;
+  /* transition: all 150ms; */
  
 }
 
@@ -354,6 +354,9 @@ input[type="text"] {
   /* half of gap */
   margin-right: -6px;
   /* half of gap */
+
+  
+
 }
 
 .tile {

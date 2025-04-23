@@ -6,10 +6,10 @@ import Image from 'next/image';
 // import { useStore } from '@nanostores/react';
 
 type ModalProps = {
-    name: string, photo: string | null, ingredients: string | null, recipe: string | null, isOpen: boolean, onClose: () => void
+    name: string, photo: string | null, ingredients: string | null, recipe: string | null, isOpen: boolean, energy: number | null, onClose: () => void
 }
 
-export function ModalDish({ isOpen, onClose, name, photo, ingredients, recipe }: ModalProps) {
+export function ModalDish({ isOpen, onClose, name, photo, ingredients, recipe, energy }: ModalProps) {
     const
         [isVisible, setIsVisible] = useState(false);
 
@@ -23,6 +23,7 @@ export function ModalDish({ isOpen, onClose, name, photo, ingredients, recipe }:
 
                 <div className={classes.modal_content} >
                   <span>{name}</span>
+                  <span>{energy} Ккал</span>
                     <div className={classes.modal_img} onClick={() => onClose()}><Image src={"/" + photo} fill alt={"'" + photo + "'"} /></div>
                     <br />
                     <article className="flex text-l text-left font-semibold text-gray-900 dark:text-white">

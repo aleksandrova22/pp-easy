@@ -18,7 +18,7 @@ export default function Authorize() {
       <Auth />
 
 
-{(session?.user?.admin)  ? <div><Admin /></div > : '' }
+{(session?.user?.admin)  ? <div ><Admin /></div > : '' }
 
       {/* <Admin /> */}
     </div>

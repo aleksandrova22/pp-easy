@@ -61,7 +61,7 @@ export function Hamburger() {
 		<div className={`lg:hidden`}>
 
 
-			<button className={`navbar-burger flex items-center text-gray-800 lg:hidden `} onClick={toggleMenu}>
+			<button className={`navbar-burger flex items-center text-gray-800 lg:hidden bg-yellow-50`} onClick={toggleMenu}>
 				{/* ☰ */}
 				🍔
 			</button>

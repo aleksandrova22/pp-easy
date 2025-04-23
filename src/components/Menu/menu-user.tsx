@@ -108,7 +108,7 @@ console.log('user', session?.user);
                     <div className={classes.menu_user_list}>
                         {data.map(userMeal => <div className={classes.menu_user} key={userMeal.id}>
                             <OneDish dishId={userMeal.menuId} />
-                            <button type="button" onClick={() => deleteDishUser(userMeal)} className={`text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>❌ Удалить из моего меню</button>
+                            <button type="button" onClick={() => deleteDishUser(userMeal)} className={`text-gray-900 bg-gradient-to-r from-green-600 via-green-400 to-lime-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 text-center m-2 mb-2`}>❌ Удалить из моего меню</button>
                            
                         </div>
                         )}

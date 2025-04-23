@@ -1,15 +1,14 @@
 .dish {
     box-sizing: border-box;
-    /* width: min-content; */
-    /* background-color: #dcdcdc; */
+
     overflow-y: auto;
     padding: 0.2em;
-    width: 200px;
+
     display: flex;
     color: black;
     flex-direction: column;
-  
-   
+
+
 }
 
 /* .one_dish :hover {
@@ -21,8 +20,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-   
-    
+    font-size: small;
+    /* align-items: center; */
+
     /* background-color: #dcdcdc; */
     /* border-radius: 1em; */
     /* margin: 0.5em; */
@@ -46,19 +46,16 @@
     }
      */
 
-
+/* 
     & div {
         color: rgb(2, 49, 2);
-      display: flex;
-        text-align: center; 
+        display: flex;
+        text-align: center;
         font-size: small;
         flex-wrap: wrap;
-        /* align-items: flex-start; */
         flex-direction: column;
-        /* white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; */
-    }
+
+    } */
 
     & button {
 

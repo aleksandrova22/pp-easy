@@ -17,8 +17,8 @@ export function CalcBJU({ onClose, children }: ListProps) {
         { valueGender, valueLifeStyle, valueTarget, addFormValues } = children,
         [Age, Height, Weight] = addFormValues;
     let BJU: number = 1;
-    if (!valueGender || !valueTarget || Age === '' || Height === null || Weight === null || valueTarget === '') return <span>Пожалуйста заполните все поля</span>
-    if (0 > +Age || 1 > +Height || 1 > +Weight) return <span>Пожалуйста введите корректные данные</span>
+    if (!valueGender || !valueTarget || Age === '' || Height === null || Weight === null || valueTarget === '') return <span >Пожалуйста, заполните все поля</span>
+    if (0 > +Age || 1 > +Height || 1 > +Weight) return <span>Пожалуйста, введите корректные данные</span>
     const
         bovValue: number | false = bov(+Age, +Height, +Weight);
 
