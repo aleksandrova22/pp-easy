@@ -5,6 +5,7 @@ import { User } from "../../shared/entities/User";
 import { Meal } from "../../shared/entities/Meal";
 import { Menu } from "../../shared/entities/Menu";
 import { UsersMeal } from "../../shared/entities/UsersMeal";
+import { Roles } from "@/demo/auth/Roles";
 
 export const api = remultNextApp({
   getUser: getUserFromRequest,
@@ -14,6 +15,6 @@ export const api = remultNextApp({
   dataProvider: createPostgresDataProvider({
     connectionString: process.env["DATABASE_URL"]
   }),
-  admin: true,
+  admin: Roles.admin,
   entities: [User, Meal, Menu, UsersMeal],
 });

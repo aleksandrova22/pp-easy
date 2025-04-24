@@ -22,11 +22,12 @@ export default function RootLayout({
     <html lang="en">
 
       <body >
-        <Header> </Header>
         <SessionProvider session={session}>
+          <Header> </Header>
           <main>  {children}</main>
+          <Footer />
         </SessionProvider>
-        <Footer />
+
         <Toaster position="bottom-center" />
       </body>
     </html>

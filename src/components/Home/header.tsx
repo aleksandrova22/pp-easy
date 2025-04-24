@@ -1,10 +1,11 @@
-'use client';
+ 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import classes from './header.module.css';
 import { Hamburger } from './hamburger';
+import { useSession } from "next-auth/react";
 
 
 
@@ -16,12 +17,14 @@ const
     { href: '/menubyuser', title: 'Мое меню' },
     // { href: '/contact', title: 'Контакты' },
     { href: '/authorize', title: 'Авторизация' },
+   
 
   ];
 
 export default function Header({ children = null }: { children: ReactNode }) {
   const pathname = usePathname();
   console.log(pathname);
+  const { data: session } = useSession();
 
   return <>
 
@@ -46,7 +49,11 @@ export default function Header({ children = null }: { children: ReactNode }) {
             <li key={href} className={pathname === href ? 'active' : ''}>
               <Link href={href}>{title} </Link>
             </li>)}
+            <li> {(session?.user?.admin)  ?   <Link href={'/api/admin'}> Управление БД </Link> : ''}</li>
         </ul>
+
+
+
             </nav>
 
           <div> <a href='/'><Image className={classes.logo} src={"/logo.png"} width={65} height={65} alt="logo"/></a></div>
