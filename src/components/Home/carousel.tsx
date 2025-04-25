@@ -1,7 +1,7 @@
 export function Carousel() {
     return <>
 
-<div className={`w-full`}>
+<div className={`flex flex-col w-full`}>
 
 <p className={`my-4 text-s text-center text-gray-700`}>
   Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
@@ -9,7 +9,7 @@ export function Carousel() {
   Готовьте вкусно и полезно!</p>
 
 
-        <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
+        <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg shadow`} >
         
             {/* <p className={`absolute top-20 left-10 my-4 text-s text-center text-white subpixel-antialiased`}>
                 Рассчитайте КБЖУ в зависимости от своих потребностей. <br />

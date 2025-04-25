@@ -40,9 +40,9 @@ export function Hamburger() {
 							<li className={`mb-1`}>
 								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/menubyuser">Мое меню</a>
 							</li>
-							<li className={`mb-1`}>
+							{/* <li className={`mb-1`}>
 								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-8000 rounded`} href="/contact">Контакты</a>
-							</li>
+							</li> */}
 							<li className={`mb-1`}>
 								<a className={`block p-4 text-m font-semibold text-gray-600 hover:bg-blue-50 hover:text-green-800 rounded`} href="/authorize">Авторизация</a>
 							</li>
