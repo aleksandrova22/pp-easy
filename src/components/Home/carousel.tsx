@@ -10,12 +10,12 @@ export function Carousel() {
 
 
         <div className={`relative aspect-1/1 bg-[url(/breakfast.jpg)] bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 w-full z-0 rounded-b-lg`} >
-            {/* <p className={`my-4 text-s text-center text-amber-50`}>
+        
+            {/* <p className={`absolute top-20 left-10 my-4 text-s text-center text-white subpixel-antialiased`}>
                 Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
                 Выбирайте рецепты, добавляйте в свое меню.<br />
-                Готовьте вкусно и полезно!</p>
-            <br />
-            <br /> */}
+                Готовьте вкусно и полезно!</p> */}
+           
             <button className={`absolute top-20 left-10 text-gray-900 bg-green-500  focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2 hover:bg-green-700 focus:outline-hidden`}>
                 <a href='/calc'> Калькулятор калорий</a> </button>
 
