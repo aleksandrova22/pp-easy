@@ -1,3 +1,4 @@
+ "use client"
 import { useEffect, useState } from 'react';
 import { repo } from 'remult';
 import Image from 'next/image';

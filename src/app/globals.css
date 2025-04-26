@@ -54,7 +54,7 @@
 */
 
 body {
-  height:  100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   color: var(--foreground);
@@ -164,10 +164,10 @@ header, footer {
 }
 
 main {
-  @apply justify-items-center ;
+  @apply justify-items-center;
   flex: 1 1 auto;
   height: min(100%, 1200px);
- 
+
   /* padding: 30px; */
 }
 
@@ -202,6 +202,9 @@ h3 {
 .button-row {
   display: flex;
   margin-top: 12px;
+  transition: all 150ms;
+  border-radius: 10px;
+  background-color: var(--color-darker);
 }
 
 .button-row>.button,
@@ -227,7 +230,7 @@ input[type="text"] {
   color: var(--color-light);
   cursor: pointer;
   /* transition: all 150ms; */
- 
+
 }
 
 /* button:disabled, */
@@ -362,14 +365,14 @@ input[type="text"] {
 .tiles {
   max-width: 580px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   margin-left: -6px;
   /* half of gap */
   margin-right: -6px;
   /* half of gap */
 
-  
+
 
 }
 

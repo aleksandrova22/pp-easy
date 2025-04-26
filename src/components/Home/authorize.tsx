@@ -1,9 +1,6 @@
-
 "use client"
-
 import Admin from "@/demo/Admin";
 import Auth from "@/demo/auth/Auth";
-import toast from 'react-hot-toast';
 import { useSession } from "next-auth/react";
 
 
@@ -20,7 +17,7 @@ export default function Authorize() {
 
 {(session?.user?.admin)  ? <div ><Admin /></div > : '' }
 
-      {/* <Admin /> */}
+    
     </div>
 
 

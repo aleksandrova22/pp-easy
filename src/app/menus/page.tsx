@@ -1,4 +1,4 @@
- "use client"
+//  "use client"
 
 import { MealList } from "@/components/Menu/meal-list"
 
