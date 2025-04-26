@@ -18,7 +18,18 @@ export function CalcBJU({ onClose, children }: ListProps) {
         [Age, Height, Weight] = addFormValues;
     let BJU: number = 1;
     if (!valueGender || !valueTarget || Age === '' || Height === null || Weight === null || valueTarget === '') return <span >Пожалуйста, заполните все поля</span>
-    if (0 > +Age || 1 > +Height || 1 > +Weight) return <span>Пожалуйста, введите корректные данные</span>
+    if (0 > +Age || 1 > +Height || 1 > +Weight) return  <span>Пожалуйста, введите корректные данные</span>
+    
+    // {   const onWrapClick = (event: any) => { if (event.target.classList.contains('modal-wrap')) onClose() };  
+    // <div className={classes.modal_wrap} onClick={onWrapClick}>
+    //     {/* кнопка закрыть мод окно */}
+    //     <div className={classes.modal_content} >
+
+    //  <span>Пожалуйста, введите корректные данные</span>
+
+    //  </div> </div>};
+
+
     const
         bovValue: number | false = bov(+Age, +Height, +Weight);
 
@@ -26,11 +37,11 @@ export function CalcBJU({ onClose, children }: ListProps) {
     if (valueGender === 'M') BJU = Math.round((+bovValue + 5) * kk(valueLifeStyle));
     if (valueGender === 'W') BJU = Math.round((+bovValue - 161) * kk(valueLifeStyle));
     const recommendation: { b: number, j: number, u: number, BJU: number } | undefined = variation(+Weight, +BJU, valueTarget);
-    console.log('recommendation', recommendation);
+    console.log('recommendation', recommendation, BJU);
 
 
     return <>
-        <ModalCalc recommendation={recommendation} onClose={onClose} />
+        <ModalCalc recommendation={recommendation} BJU={BJU} onClose={onClose} />
     </>
 }
 
@@ -87,11 +98,11 @@ function variation(Weight: number, BJU: number, Target: string) {
 };
 
 type modalCalcProps = {
-    recommendation: { b: number, j: number, u: number, BJU: number } | undefined, onClose: () => void
+    recommendation: { b: number, j: number, u: number, BJU: number } | undefined, onClose: () => void, BJU: number
 }
 
 //модальное окно калькулятора
-export function ModalCalc({ recommendation, onClose }: modalCalcProps) {
+export function ModalCalc({ recommendation, BJU, onClose }: modalCalcProps) {
     const onWrapClick = (event: any) => { if (event.target.classList.contains('modal-wrap')) onClose() };
     return <div className={classes.modal}>
         <div className={classes.modal_wrap} onClick={onWrapClick}>
@@ -100,7 +111,7 @@ export function ModalCalc({ recommendation, onClose }: modalCalcProps) {
             <div className={classes.modal_content} >
 
                 <span> Рекомендуемая суточная норма калорий:  </span>
-                <div>{recommendation?.BJU} Ккал</div>
+                <div>{BJU} Ккал</div>
                 <span> Ориентир для сброса / набора веса:</span>
                 <p>Калории:{recommendation?.BJU} </p>
                 <p>Суточная норма белка: {recommendation?.b} грамм</p>

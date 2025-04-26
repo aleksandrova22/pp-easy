@@ -28,7 +28,7 @@
     /* margin: 0.5em; */
 
     /* border: 1px solid green; */
-    min-width: min-content;
+    min-width: 200px;
 
     & #default_modal {
         display: flex;

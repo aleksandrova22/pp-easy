@@ -24,11 +24,11 @@ export function Footer() {
     </div>
 
 
-    <br />
+   
         <br />
-    <div className={classes.footer_bottom}>
+    {/* <div className={classes.footer_bottom}>
       <p>© 2025 Александрова Елена Юрьевна</p>
-    </div>
+    </div> */}
 
 
 

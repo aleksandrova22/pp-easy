@@ -22,14 +22,19 @@ export default function RootLayout({
     <html lang="en">
 
       <body >
-        <SessionProvider session={session}>
-          <Header> </Header>
-          <main>  {children}</main>
-         
-        </SessionProvider>
-        <Footer />
+        <div className="wrapper">
+          <SessionProvider session={session}>
+
+            <Header> </Header>
+            <main>  {children}</main>
+
+          </SessionProvider>
+          <Footer />
+
+        </div>
         <Toaster position="bottom-center" />
       </body>
+
     </html>
   );
 }
