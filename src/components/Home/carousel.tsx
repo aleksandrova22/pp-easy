@@ -1,27 +1,29 @@
 export function Carousel() {
     return <>
 
-<div className={`aspect-1/1 bg-[url(/breakfast.jpg)] w-full bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 z-0 rounded-b-lg shadow h-full`}> 
+<main className={`bg-[url(/breakfast.jpg)] w-full bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 z-0 rounded-b-lg shadow h-full`}> 
 
 <h2>Легкий старт к здоровью и стройности</h2>
 
-<p className={`my-4 text-s text-center text-white`}>
+<p className={`my-4 text-sm text-center text-white lg:text-xl`}>
   Рассчитайте КБЖУ в зависимости от своих потребностей. <br />
   Выбирайте рецепты, добавляйте в свое меню.<br />
   Готовьте вкусно и полезно!</p>
+  <br />
+  <br />
 
-  <button className={`absolute top-50 left-10 text-gray-900 bg-green-500  focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2 hover:bg-green-700 focus:outline-hidden`}>
+  <button className={` text-gray-900 bg-green-500  focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2 hover:bg-green-700 focus:outline-hidden`}>
                 <a href='/calc'> Калькулятор калорий</a> </button>
 
 
             <br />
             <br />
 
-            <button type="button" className={`absolute top-70 left-10 text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
+            <button type="button" className={` text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2`}>
                 <a href='/menus'>Полезные рецепты</a>
             </button>
 
-</div>
+</main>
 
 
 

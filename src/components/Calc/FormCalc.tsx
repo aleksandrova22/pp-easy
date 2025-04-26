@@ -34,7 +34,7 @@ export function FormCalc() {
         [valueTarget, setValueTarget] = useState<string>('') || null,
         [show, setShow] = useState(false);
 
-    return <>
+    return <main>
         <div className={classes.calc}>
 
             <h3>Что такое КБЖУ?</h3>
@@ -88,11 +88,13 @@ export function FormCalc() {
             <br />
 
 
+
+
             <button style={{ backgroundColor: show ? 'green' : '' }}
                 onClick={() => {
                     // if (!valueGender) return <span></span>
-                    setShow(!show); console.log(addFormValues, valueLifeStyle, valueGender, valueTarget); <div >
-                    </div>
+                    setShow(!show); console.log(addFormValues, valueLifeStyle, valueGender, valueTarget); 
+                   
                 }}>
                 Рассчитать </button>
             <div >
@@ -100,5 +102,5 @@ export function FormCalc() {
             </div>
 
         </div>
-    </>
+    </main>
 };

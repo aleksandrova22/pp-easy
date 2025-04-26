@@ -166,7 +166,9 @@ header, footer {
 main {
   @apply justify-items-center ;
   flex: 1 1 auto;
-  padding: 30px;
+  height: min(100%, 1200px);
+ 
+  /* padding: 30px; */
 }
 
 :link {

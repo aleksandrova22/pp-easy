@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export default function PageContact() {
 
-  return <>
+  return <main>
     <h2>Контактная информация</h2>
 
     <div className={`flex flex-nowrap`}>
-    
+
       <p>Электронная почта: <a href="mailto:lialia1986@mail.ru">lialia1986@mail.ru</a></p>
       <p>Социальные сети:</p>
       <Image src={"/tg.png"} width={30} height={30} alt="tg" />
@@ -19,11 +19,5 @@ export default function PageContact() {
 
 
 
-
-
-
-           
-   
-
-  </>
+  </main>
 }

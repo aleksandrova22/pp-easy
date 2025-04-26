@@ -26,7 +26,9 @@ export default function RootLayout({
           <SessionProvider session={session}>
 
             <Header> </Header>
-            <main>  {children}</main>
+            {/* <main>   */}
+              {children}
+              {/* </main> */}
 
           </SessionProvider>
           <Footer />
