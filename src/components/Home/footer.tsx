@@ -14,7 +14,7 @@ export function Footer() {
       <div className={classes.footer_info}>
         <div><p>Социальные сети:</p>
           <p><Image src={"/tg.png"} width={30} height={30} alt="tg" /> <a href="https://t.me/lyamurka22" target="_blank" rel="noopener noreferrer"> lyamurka22</a></p>
-          <p><Image src={"/ig.png"} width={30} height={30} alt="ig" /> <a href="https://www.instagram.com/lyamurka22" target="_blank" rel="noopener noreferrer">@lyamurka22</a></p>
+          {/* <p><Image src={"/ig.png"} width={30} height={30} alt="ig" /> <a href="https://www.instagram.com/lyamurka22" target="_blank" rel="noopener noreferrer">@lyamurka22</a></p> */}
         </div>
       </div>
 

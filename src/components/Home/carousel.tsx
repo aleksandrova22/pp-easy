@@ -1,6 +1,7 @@
 export function Carousel() {
     return <>
 
+
 <main className={`bg-[url(/breakfast.jpg)] w-full bg-center bg-no-repeat bg-cover items-center justify-items-center sepia-50 z-0 rounded-b-lg shadow h-full`}> 
 
 <h2>Легкий старт к здоровью и стройности</h2>
@@ -12,7 +13,7 @@ export function Carousel() {
   <br />
   <br />
 
-  <button className={` text-gray-900 bg-green-500  focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2 hover:bg-green-700 focus:outline-hidden`}>
+  <button className={` relative text-gray-900 bg-green-500  focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2 hover:bg-green-700 focus:outline-hidden`}>
                 <a href='/calc'> Калькулятор калорий</a> </button>
 
 
